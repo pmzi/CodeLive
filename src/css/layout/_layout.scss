@@ -1,5 +1,11 @@
 #wrapper{
     width: 100%;
     height: 100%;
-    background-color: whitesmoke;
+    background-color: $back-color;
+
+    display: grid;
+
+    grid-template-rows: [header-start] 4rem [header-end main-start] 1fr [main-end footer-start] 3rem [footer-end];
+    grid-template-columns: repeat(12, 1fr); 
+
 }

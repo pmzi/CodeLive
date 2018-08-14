@@ -1,3 +1,60 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the header of the site/application.
 // -----------------------------------------------------------------------------
+.header{
+    grid-area: header-start / 1 / header-end / -1;
+
+    background-color: darken($back-color, 2);
+
+    display: flex;
+
+    padding: 0 1rem;
+
+    align-items: center;
+
+    justify-content: center;
+
+    &__ip-address{
+        color: #8e44ad;
+        text-shadow: 0 0 0.5rem #8e44ad;
+        flex-grow: 1;    
+        text-align: center;
+    }
+
+    &__left-side{
+        flex-grow: 1;
+
+        display: flex;
+
+        align-items: center;
+
+        color: red;
+
+        .header__side-icon{
+            text-shadow: 0 0 0.5rem red;
+        }
+
+    }
+
+    &__right-side{
+        flex-grow: 1;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: flex-end;
+
+        color: #27ae60;
+
+        .header__side-icon{
+            text-shadow: 0 0 0.5rem #27ae60;
+        }
+
+    }
+
+    &__side-icon{
+        cursor: pointer;
+    }
+
+}
