@@ -26,7 +26,7 @@ class WindowHandler {
         // this._mainWindow.webContents.openDevTools();
 
         // and load the index.html of the app.
-        this._mainWindow.loadURL(`file://${__dirname}/../views/mainPage.html`);
+        this._mainWindow.loadURL(`file://${__dirname}/../views/start.html`);
 
         // Emitted when the window is closed.
         this._mainWindow.on('closed', () => {
