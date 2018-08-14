@@ -19,11 +19,16 @@
 
 // 4. Layout-related sections
 @import
+  'layout/layout',
   'layout/header',
   'layout/footer';
 
 // 5. Components
 @import
+  'components/choice',
+  'components/loading',
+  'components/input',
+  'components/choosingPage',
   'components/button';
 
 // 6. Page-specific styles
