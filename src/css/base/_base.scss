@@ -7,6 +7,16 @@
  */
 html {
   box-sizing: border-box;
+  font-size: calc(100% * 0.625);
+  font-family: $font-family;
+}
+
+body{
+  margin: 0px;
+}
+
+html, body{
+  height: 100%;
 }
 
 /**
