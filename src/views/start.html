@@ -19,7 +19,7 @@
 
     <div class="choosingPage">
 
-        <div class="choosingPage__item choice">
+        <div data-action="create" class="choosingPage__item choice">
 
             <img src="../images/networking.png" alt="">
 
@@ -29,7 +29,7 @@
 
         </div>
 
-        <div class="choosingPage__item choice">
+        <div data-action="join" class="choosingPage__item choice">
 
             <img src="../images/networking.png" alt="">
 
@@ -56,6 +56,14 @@
         </div>
 
     </div>
+
+    <script src="../js/helpers/elementHelper.js"></script>
+
+    <script>
+        
+        require('../js/views/start/choosingPage');
+    
+    </script>
 
 </body>
 
