@@ -17,11 +17,11 @@ class WindowHandler {
     init() { // creates main window
 
         this._mainWindow = new BrowserWindow({
-            width: 940,
-            height: 500,
             show: false,
             icon: `${__dirname}/../images/logo.gif.ico`
         });
+        
+        this._mainWindow.maximize();
 
         // this._mainWindow.webContents.openDevTools();
 
