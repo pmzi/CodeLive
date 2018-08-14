@@ -40,11 +40,25 @@ class Server {
 
     join(ipAddress) {
 
-        const connectedSocket = socket(`http://${ipAddress}`);
+        return new Promise((resolve, reject) => {
+            
+            const connectedSocket = socket(`http://${ipAddress}`);
 
-        connectedSocket.on('connect', () => {
+            let socketInterval;
 
-            console.log("connected to server")
+            connectedSocket.on('connect', () => {
+
+                clearInterval(socketInterval)
+
+                console.log("connected to server")
+
+                resolve();
+
+            })
+
+            socketInterval = setInterval(()=>{
+                reject();
+            }, 5000)
 
         })
 
