@@ -1,0 +1,97 @@
+.languageSelect{
+
+    width: 15rem;
+    height: 100%;
+
+    position: relative;
+
+    font-size: 1.4rem;
+
+    &__selected-text{
+        height: 100%;
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+
+        padding: 0 0.5rem;
+
+        display: flex;
+        align-items: center;
+
+        cursor: pointer;
+
+        transition-duration: 0.3s;
+
+        &:hover{
+
+            transition-duration: 0.3s;
+
+            background-color: darken($back-color, 1);
+        }
+
+        &>img{
+            width: 2rem;
+            height: 2rem;
+            margin-right: 0.5rem;
+        }
+
+    }
+
+    &__items-wrapper{
+
+        position: absolute;
+
+        width: 100%;
+
+        background-color: $back-color;
+
+        opacity: 0;
+        visibility: hidden;
+
+        bottom: 50%;
+
+        transition-duration: 0.3s;
+
+        &--show{
+            bottom: 102%;
+            transition-duration: 0.3s;
+            opacity: 1;
+            visibility: visible;
+        }
+
+    }
+
+    &__item{
+        height: 3rem;
+        line-height: 3rem;
+        cursor: pointer;
+
+        padding: 0 0.5rem;
+
+        user-select: none;
+
+        display: flex;
+        align-items: center;
+
+        border-bottom: 0.1rem solid lighten($back-color, 5);
+
+        transition-duration: 0.3s;
+
+        &:hover{
+
+            transition-duration: 0.3s;
+
+            background-color: darken($back-color, 1);
+        }
+
+        &>img{
+            width: 2rem;
+            height: 2rem;
+
+            margin-right: 0.5rem;
+
+        }
+    }
+
+}

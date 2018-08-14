@@ -1,0 +1,19 @@
+.icon{
+
+    user-select: none;
+
+    &--clickable{
+        cursor: pointer;
+    }
+
+    &--red{
+        color: red;
+        text-shadow: 0 0 0.5rem red;
+    }
+
+    &--green{
+        color: #27ae60;
+        text-shadow: 0 0 0.5rem #27ae60;
+    }
+
+}

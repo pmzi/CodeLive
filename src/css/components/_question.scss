@@ -1,0 +1,32 @@
+.question{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 1rem;
+
+    &__heading{
+        text-shadow: 0 0 0.5rem white;
+    }
+
+    &__item{
+        display: flex;
+        flex-direction: column;
+        border-bottom: 0.1rem solid lighten($back-color, 5);
+    }
+    &__text{
+        width: 100%;
+        height: 2.2rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    &__actions{
+        display: flex;
+        align-items: center;
+        height: 3rem;
+        justify-content: flex-end;
+    }
+
+}

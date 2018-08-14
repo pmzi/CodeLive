@@ -28,12 +28,6 @@
 
         align-items: center;
 
-        color: red;
-
-        .header__side-icon{
-            text-shadow: 0 0 0.5rem red;
-        }
-
     }
 
     &__right-side{
@@ -44,12 +38,6 @@
         align-items: center;
 
         justify-content: flex-end;
-
-        color: #27ae60;
-
-        .header__side-icon{
-            text-shadow: 0 0 0.5rem #27ae60;
-        }
 
     }
 

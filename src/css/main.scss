@@ -19,12 +19,17 @@
 
 // 4. Layout-related sections
 @import
+  'layout/aside',
+  'layout/editorWrapper',
   'layout/layout',
   'layout/header',
   'layout/footer';
 
 // 5. Components
 @import
+  'components/languageSelect',
+  'components/icon',
+  'components/question',
   'components/choice',
   'components/loading',
   'components/input',
