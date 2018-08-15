@@ -2,9 +2,9 @@ const Server = require('./Server');
 
 const server = new Server();
 
-class ChoosingPage {
+class MainPage {
 
-    static initStaticEvents() {
+    static initChoosingPageEvents() {
 
         let choicesOfChoosingPage = $$('.choosingPage .choice');
 
@@ -85,4 +85,4 @@ class ChoosingPage {
 
 }
 
-ChoosingPage.initStaticEvents();
+MainPage.initChoosingPageEvents()();
