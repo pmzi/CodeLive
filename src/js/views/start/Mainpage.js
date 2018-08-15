@@ -56,19 +56,27 @@ class MainPage {
                                 $('.choosingPage__loading').classList.add('choosingPage__loading--show');
 
                                 server.join(ipAddress).then(() => {
+
                                     setTimeout(() => {
+
                                         $('.choosingPage__loading').classList.remove('choosingPage__loading--show');
 
                                         $('.choosingPage').classList.add('choosingPage--fadeOut');
 
                                         setTimeout(()=>{
+
                                             $('.choosingPage').classList.add('none');
+
                                         }, 500)
 
                                     }, 500)
+
                                 }).catch(()=>{
+
                                     $('.choosingPage__loading').classList.remove('choosingPage__loading--show');
+
                                     this.classList.add('input--error');
+
                                 });
                             }
 
@@ -83,6 +91,37 @@ class MainPage {
 
     }
 
+    static initMainPageEvents(){
+
+        // disconnect event
+
+        $('.header__side-icon>i:first-child').onclick = ()=>{
+            
+            server.disconnect();
+
+            // Let's show the choosingPage
+
+            $('.choosingPage').classList.remove('none');
+            setTimeout(()=>{
+
+                $('.choosingPage').classList.remove('choosingPage--fadeOut');
+                $('.choosingPage__address-wrapper').classList.remove('choosingPage__address-wrapper--show');
+                $('.choosingPage__loading').classList.remove('choosingPage__loading--show');
+                $('.choosingPage .choosingPage__item--selected').classList.remove('choosingPage__item--selected');
+                $('.choosingPage .choosingPage__item--not-selected').classList.remove('choosingPage__item--not-selected');
+
+            },100)
+            
+        };
+
+        // Run event
+
+        $();
+
+    }
+
 }
 
-MainPage.initChoosingPageEvents()();
+MainPage.initChoosingPageEvents();
+
+MainPage.initMainPageEvents();
