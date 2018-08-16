@@ -84,12 +84,12 @@ class Server {
         if(this.isServer){
             // It is a server
 
-            // this.server.close();
+            this.server.close();
 
             // server is down!
 
         }else{
-            console.log(this.socket)
+            
             this.socket.destroy();
 
         }

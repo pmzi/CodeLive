@@ -1,5 +1,7 @@
 const Server = require('./Server');
 
+const Runner = require('./Runner');
+
 const server = new Server();
 
 class MainPage {
@@ -95,7 +97,7 @@ class MainPage {
 
         // disconnect event
 
-        $('.header__side-icon>i:first-child').onclick = ()=>{
+        $('.header__left-side>div:first-child').onclick = ()=>{
             
             server.disconnect();
 
@@ -116,8 +118,29 @@ class MainPage {
 
         // Run event
 
-        $();
+        $('.header__right-side>div:first-child').onclick = ()=>{
+            let address = Runner.saveHTML(window.editor.getValue());
+            $('.HTMLRunner').classList.add('HTMLRunner--show');
+            $('.HTMLRunner__iframe').setAttribute('src',address);
+        };
 
+    }
+
+    static initHTMLRunnerEvents(){
+        $('.HTMLRunner__tool:nth-child(1)').onclick = ()=>{
+            $('.HTMLRunner').classList.remove('HTMLRunner--show');
+        };
+
+        $('.HTMLRunner__tool:nth-child(2)').onclick = ()=>{
+            $('.HTMLRunner__iframe').contentWindow.location.reload();
+        };
+
+        $('.HTMLRunner__tool:nth-child(3)').onclick = ()=>{
+            let iframeContent = $('.HTMLRunner__iframe').contentWindow;
+            iframeContent.console.log = (val)=>{
+                console.log(val)
+            }
+        };
     }
 
 }
@@ -125,3 +148,5 @@ class MainPage {
 MainPage.initChoosingPageEvents();
 
 MainPage.initMainPageEvents();
+
+MainPage.initHTMLRunnerEvents();

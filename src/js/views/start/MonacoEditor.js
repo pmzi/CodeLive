@@ -26,13 +26,24 @@ class MonacoEditor {
         // workaround monaco-typescript not understanding the environment
         self.process.browser = true;
         amdRequire(['vs/editor/editor.main'], function () {
-            var editor = monaco.editor.create(document.getElementById('monaco-editor'), {
-                value: [
-                    'function x() {',
-                    '\tconsole.log("Hello world!");',
-                    '}'
-                ].join('\n'),
-                language: 'javascript',
+            window.editor = monaco.editor.create(document.getElementById('monaco-editor'), {
+                value: `<html>
+
+<head>
+    <title>
+        Title of the page
+    </title>
+</head>
+<body>
+                
+    <p>
+        Hello World
+    </p>
+                
+</body>
+
+</html>`,
+                language: 'html',
                 theme:'vs-dark'
             });
             
