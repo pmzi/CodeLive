@@ -1,0 +1,55 @@
+.HTMLRunner{
+    width: 100%;
+    height: 100%;
+    
+    position: fixed;
+    top: 100%;
+
+    transition-duration: 0.3s;
+
+    background-color: white;
+
+    display: flex;
+
+    &--show{
+
+        transition-duration: 0.3s;
+
+        top: 0;
+
+    }
+
+    &__iframe{
+
+        width: 100%;
+        height: 100%;
+
+        flex-grow: 1;
+
+    }
+
+    &__toolbox{
+        
+        
+        flex-basis: 3rem;
+        
+        background-color: whitesmoke;
+
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    &__tool{
+
+        width: 2.5rem;
+        height: 2.5rem;
+
+
+
+    }
+
+}
