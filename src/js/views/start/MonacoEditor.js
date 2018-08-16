@@ -25,7 +25,7 @@ class MonacoEditor {
         self.module = undefined;
         // workaround monaco-typescript not understanding the environment
         self.process.browser = true;
-        amdRequire(['vs/editor/editor.main'], function () {
+        amdRequire(['vs/editor/editor.main'],  ()=>{
             window.editor = monaco.editor.create(document.getElementById('monaco-editor'), {
                 value: `<html>
 
@@ -46,11 +46,25 @@ class MonacoEditor {
                 language: 'html',
                 theme:'vs-dark'
             });
-            
+
+            // Let's init socket events
+
+            this.initSocketEvents(window.editor);
+
             window.onresize = ()=>{
                 editor.layout();
             }
         });
+
+    }
+
+    initSocketEvents(editor){
+
+        console.log(editor)
+
+        editor.cursor.onDidChange(function(a,b,c){
+            console.log(a,b,c)
+        })
 
     }
 
