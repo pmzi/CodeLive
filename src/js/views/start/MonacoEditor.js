@@ -1,8 +1,8 @@
 class MonacoEditor {
 
-    constructor(containerID) {
-
+    constructor(containerID) {      
         
+        this._editor;
 
         // Save Monaco's amd require and restore Node's require
         var amdRequire = global.require;
@@ -26,7 +26,7 @@ class MonacoEditor {
         // workaround monaco-typescript not understanding the environment
         self.process.browser = true;
         amdRequire(['vs/editor/editor.main'],  ()=>{
-            window.editor = monaco.editor.create(document.getElementById('monaco-editor'), {
+            this._editor = monaco.editor.create(document.getElementById('monaco-editor'), {
                 value: `<html>
 
 <head>
@@ -49,27 +49,40 @@ class MonacoEditor {
 
             // Let's init socket events
 
-            this.initSocketEvents(window.editor);
+            this.initSocketEvents();
 
             window.onresize = ()=>{
-                editor.layout();
+                this.editor.layout();
             }
         });
 
     }
 
-    initSocketEvents(editor){
+    initSocketEvents(){
 
-        console.log(editor)
-
-        editor.cursor.onDidChange(function(a,b,c){
-            console.log(a,b,c)
+        this.editor.cursor.onDidChange((data)=>{
+            console.log(data, "cursorChange")
+            window.server.emit(data, "cursorChange")
         })
 
+        this.editor.getModel().onDidChangeContent((data)=>{
+            console.log(data, "contentChange")
+            window.server.emit(data, "contentChange")
+        })
+
+        this.editor.onDidScrollChange((data)=>{
+            console.log(data, "scrollChange")
+            window.server.emit(data, "scrollChange")
+        })        
+
+    }
+
+    get editor(){
+        return this._editor;
     }
 
 }
 
 window.onload = ()=>{
-    new MonacoEditor("monaco-editor");
+    window.mainEditor = new MonacoEditor("monaco-editor");
 }

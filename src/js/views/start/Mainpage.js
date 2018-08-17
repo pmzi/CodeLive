@@ -2,7 +2,7 @@ const Server = require('./Server');
 
 const Runner = require('./Runner');
 
-const server = new Server();
+window.server = new Server();
 
 class MainPage {
 
@@ -33,7 +33,7 @@ class MainPage {
 
                             $('.choosingPage').classList.add('choosingPage--fadeOut');
 
-                            setTimeout(()=>{
+                            setTimeout(() => {
                                 $('.choosingPage').classList.add('none');
                             }, 500)
 
@@ -65,7 +65,7 @@ class MainPage {
 
                                         $('.choosingPage').classList.add('choosingPage--fadeOut');
 
-                                        setTimeout(()=>{
+                                        setTimeout(() => {
 
                                             $('.choosingPage').classList.add('none');
 
@@ -73,7 +73,7 @@ class MainPage {
 
                                     }, 500)
 
-                                }).catch(()=>{
+                                }).catch(() => {
 
                                     $('.choosingPage__loading').classList.remove('choosingPage__loading--show');
 
@@ -93,18 +93,18 @@ class MainPage {
 
     }
 
-    static initMainPageEvents(){
+    static initMainPageEvents() {
 
         // disconnect event
 
-        $('.header__left-side>div:first-child').onclick = ()=>{
-            
+        $('.header__left-side>div:first-child').onclick = () => {
+
             server.disconnect();
 
             // Let's show the choosingPage
 
             $('.choosingPage').classList.remove('none');
-            setTimeout(()=>{
+            setTimeout(() => {
 
                 $('.choosingPage').classList.remove('choosingPage--fadeOut');
                 $('.choosingPage__address-wrapper').classList.remove('choosingPage__address-wrapper--show');
@@ -112,33 +112,42 @@ class MainPage {
                 $('.choosingPage .choosingPage__item--selected').classList.remove('choosingPage__item--selected');
                 $('.choosingPage .choosingPage__item--not-selected').classList.remove('choosingPage__item--not-selected');
 
-            },100)
-            
+            }, 100)
+
         };
 
         // Run event
 
-        $('.header__right-side>div:first-child').onclick = ()=>{
-            let address = Runner.saveHTML(window.editor.getValue());
-            $('.HTMLRunner').classList.add('HTMLRunner--show');
-            $('.HTMLRunner__iframe').setAttribute('src',address);
+        $('.header__right-side>div:first-child').onclick = () => {
+
+            server.emit({}, "runHTML");
+
+            Runner.runHTML(mainEditor.editor.getValue());
         };
 
     }
 
-    static initHTMLRunnerEvents(){
-        $('.HTMLRunner__tool:nth-child(1)').onclick = ()=>{
-            $('.HTMLRunner').classList.remove('HTMLRunner--show');
+    static initHTMLRunnerEvents() {
+        
+        $('.HTMLRunner__tool:nth-child(1)').onclick = () => {
+
+            server.emit({}, "hideHTML");
+
+            Runner.hideHTML();
         };
 
-        $('.HTMLRunner__tool:nth-child(2)').onclick = ()=>{
-            $('.HTMLRunner__iframe').contentWindow.location.reload();
+        $('.HTMLRunner__tool:nth-child(2)').onclick = () => {
+            server.emit({}, "reloadHTML");
+            Runner.reloadHTML()
+            
         };
 
-        $('.HTMLRunner__tool:nth-child(3)').onclick = ()=>{
-            let iframeContent = $('.HTMLRunner__iframe').contentWindow;
-            iframeContent.console.log = (val)=>{
-                console.log(val)
+        $('.HTMLRunner__tool:nth-child(3)').onclick = () => {
+            
+            if(!$('.HTMLRunner__console').classList.contains('HTMLRunner__console--show')){
+                $('.HTMLRunner__console').classList.add('HTMLRunner__console--show');
+            }else{
+                $('.HTMLRunner__console').classList.remove('HTMLRunner__console--show');
             }
         };
     }
