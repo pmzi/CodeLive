@@ -1,5 +1,9 @@
 const Server = require('./Server');
 
+const Dialog = require('../../helpers/Dialog');
+
+const fs = require('fs');
+
 const Runner = require('./Runner');
 
 window.server = new Server();
@@ -123,6 +127,15 @@ class MainPage {
             server.emit({}, "runHTML");
 
             Runner.runHTML(mainEditor.editor.getValue());
+        };
+
+        // client actions
+
+        $('.clientActions__action:first-child').onclick = ()=>{
+            let path = Dialog.chooseDirectory();
+            if(path){
+                fs.writeFileSync(`${path}/${Date.now()}.html`,mainEditor.editor.getValue());
+            }
         };
 
     }
