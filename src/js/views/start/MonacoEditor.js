@@ -52,7 +52,7 @@ class MonacoEditor {
             this.initSocketEvents();
 
             window.onresize = ()=>{
-                this.editor.layout();
+                this._editor.layout();
             }
         });
 

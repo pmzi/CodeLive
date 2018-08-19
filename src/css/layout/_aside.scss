@@ -1,5 +1,10 @@
-.admin{
+.server{
     .aside{
         grid-area: main-start / 10 / main-end / -1;
+    }
+}
+.client{
+    .aside{
+        display: none!important;
     }
 }

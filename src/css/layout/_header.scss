@@ -46,3 +46,10 @@
     }
 
 }
+.client{
+    .header{
+        &__ip-address{
+            display: none;
+        }
+    }
+}

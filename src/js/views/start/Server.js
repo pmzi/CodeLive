@@ -43,6 +43,11 @@ class Server {
 
             this.server.listen(2020);
 
+            // Let's set the admin class
+
+            $('#wrapper').classList = 'server';
+            mainEditor.editor.layout();
+
             resolve();
 
         })
@@ -69,6 +74,11 @@ class Server {
 
                 this.handleClientSocket(connectedSocket)
 
+                // Let's set the client class
+
+                $('#wrapper').classList = 'client';
+                mainEditor.editor.layout();
+
                 resolve();
 
             })
@@ -85,7 +95,7 @@ class Server {
 
     handleClientSocket(socket) {
 
-        socket.emit('join',OS.hostname());
+        socket.emit('join', OS.hostname());
 
         socket.on("data", (data) => {
 
@@ -96,8 +106,8 @@ class Server {
         });
 
         socket.on("contentChange", (data) => {
-            
-            for(let change of data.changes){
+
+            for (let change of data.changes) {
                 mainEditor.editor.executeEdits("", [{
                     range: new monaco.Range(change.range.startLineNumber,
                         change.range.startColumn,
@@ -117,12 +127,12 @@ class Server {
 
             let selections = [];
 
-            for(let selection of data.selections){
+            for (let selection of data.selections) {
                 selections.push(new monaco.Selection(
                     selection.startLineNumber,
                     selection.startColumn,
                     selection.endLineNumber,
-                    selection.endColumn                    
+                    selection.endColumn
                 ));
             }
 
@@ -140,24 +150,23 @@ class Server {
 
         });
 
-        socket.on("runHTML", ()=>{
+        socket.on("runHTML", () => {
             Runner.runHTML(mainEditor.editor.getValue())
         })
 
-        socket.on("hideHTML", ()=>{
+        socket.on("hideHTML", () => {
             Runner.hideHTML()
         })
 
-        socket.on("reloadHTML", ()=>{
+        socket.on("reloadHTML", () => {
             Runner.reloadHTML()
         })
 
-        socket.on("disconnect",()=>{
-            console.log("ss")
+        socket.on("disconnect", () => {
             $('.connectionState__state').classList.remove('connectionState__state--connected');
-                $('.connectionState__state').classList.add('connectionState__state--disconnected');
+            $('.connectionState__state').classList.add('connectionState__state--disconnected');
         })
-        
+
 
     }
 
@@ -167,7 +176,7 @@ class Server {
 
         console.log("Joined");
 
-        socket.on('join', (data)=>{
+        socket.on('join', (data) => {
             $('.users').append(`
             <div class="users__user" data-id="${socket.id}">
                 <div class="users__username">
@@ -184,20 +193,20 @@ class Server {
         </div>`);
         });
 
-        socket.on('disconnect',()=>{
+        socket.on('disconnect', () => {
             console.log(socket)
             $(`.users__user[data-id="${socket.id}"]`).remove();
         })
 
         // Let's send them current data
 
-        socket.emit("data",mainEditor.editor.getValue());
+        socket.emit("data", mainEditor.editor.getValue());
 
-        socket.emit("cursorChange",{
+        socket.emit("cursorChange", {
             selections: mainEditor.editor.getSelections()
         });
 
-        socket.emit("scrollChange",{
+        socket.emit("scrollChange", {
             scrollLeft: mainEditor.editor.getScrollLeft(),
             scrollTop: mainEditor.editor.getScrollTop()
         });
