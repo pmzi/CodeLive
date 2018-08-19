@@ -6,6 +6,8 @@ const server = require('http');
 
 const Runner = require("./Runner");
 
+const OS = require('os');
+
 class Server {
 
     constructor() {
@@ -67,6 +69,8 @@ class Server {
 
             })
 
+            this.socket = connectedSocket;
+
             socketInterval = setInterval(() => {
                 reject();
             }, 5000)
@@ -76,6 +80,8 @@ class Server {
     }
 
     handleClientSocket(socket) {
+
+        socket.emit('join',OS.hostname());
 
         socket.on("data", (data) => {
 
@@ -151,6 +157,28 @@ class Server {
 
         console.log("Joined");
 
+        socket.on('join', (data)=>{
+            $('.users').append(`
+            <div class="users__user" data-id="${socket.id}">
+                <div class="users__username">
+                    ${data}
+                </div>
+                <div class="users__actions">
+                    <!-- <i class="material-icons icon icon--red icon--clickable">
+                        close
+                    </i> -->
+                    <!-- <i class="material-icons icon icon--green icon--clickable">
+                        done
+                    </i> -->
+                </div>
+        </div>`);
+        });
+
+        socket.on('disconnect',()=>{
+            console.log(socket)
+            $(`.users__user[data-id="${socket.id}"]`).remove();
+        })
+
         // Let's send them current data
 
         socket.emit("data",mainEditor.editor.getValue());
@@ -177,7 +205,7 @@ class Server {
 
         } else {
 
-            this.socket.destroy();
+            this.socket.disconnect();
 
         }
 
