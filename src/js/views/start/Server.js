@@ -59,6 +59,10 @@ class Server {
 
             connectedSocket.on('connect', () => {
 
+                // Make the connection state connected
+                $('.connectionState__state').classList.remove('connectionState__state--disconnected');
+                $('.connectionState__state').classList.add('connectionState__state--connected');
+
                 clearInterval(socketInterval)
 
                 console.log("connected to server")
@@ -147,6 +151,12 @@ class Server {
         socket.on("reloadHTML", ()=>{
             Runner.reloadHTML()
         })
+
+        socket.on("disconnect",()=>{
+            console.log("ss")
+            $('.connectionState__state').classList.remove('connectionState__state--connected');
+                $('.connectionState__state').classList.add('connectionState__state--disconnected');
+        })
         
 
     }
@@ -163,14 +173,14 @@ class Server {
                 <div class="users__username">
                     ${data}
                 </div>
-                <div class="users__actions">
+                <!-- <div class="users__actions">
                     <!-- <i class="material-icons icon icon--red icon--clickable">
                         close
                     </i> -->
                     <!-- <i class="material-icons icon icon--green icon--clickable">
                         done
                     </i> -->
-                </div>
+                </div> -->
         </div>`);
         });
 
