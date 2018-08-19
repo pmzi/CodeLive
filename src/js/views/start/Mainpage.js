@@ -48,11 +48,15 @@ class MainPage {
                 } else {
 
                     // Let's join
-
+                    
                     setTimeout(() => {
 
                         $('.choosingPage__address-wrapper').classList.add('choosingPage__address-wrapper--show');
 
+                        setTimeout(()=>{
+                            $('.choosingPage__address-wrapper input').focus();
+                        },200)
+                        
                         $('.choosingPage__address-wrapper input').onkeydown = function (e) {
 
                             if (e.key.toLowerCase() == 'enter') {
