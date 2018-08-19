@@ -1,0 +1,36 @@
+.users{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 1rem;
+
+    &__heading{
+        text-shadow: 0 0 0.5rem white;
+    }
+
+    &__user{
+        padding-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 0.1rem solid lighten($back-color, 5);
+    }
+    &__username{
+        width: 100%;
+        height: 1.6rem;
+        line-height: 1.6rem;
+        padding-left: 0.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 1.2rem;
+        white-space: nowrap;
+    }
+    &__actions{
+        display: flex;
+        align-items: center;
+        height: 3rem;
+        justify-content: flex-end;
+    }
+
+}
