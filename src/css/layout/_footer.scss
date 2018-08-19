@@ -8,3 +8,17 @@
     align-items: center;
 
 }
+.client{
+    .footer{
+        .languageSelect{
+            display: none;
+        }
+    }
+}
+.server{
+    .footer{
+        .clientActions{
+            display: none;
+        }
+    }
+}
