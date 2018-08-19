@@ -1,0 +1,29 @@
+.connectionState{
+    width: 1rem;
+    height: 1rem;
+    margin-left: auto;
+
+    margin-right: 1rem;
+
+    display: flex;
+
+    &__state{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+
+        transition-duration: 0.3s;
+        
+        &--connected{
+            background-color: green;
+            box-shadow: 0 0 0.1rem 0.1rem rgba(0,255,0,0.3);
+        }
+
+        &--disconnected{
+            background-color: red;
+            box-shadow: 0 0 0.2rem 0.2rem rgba(255,0,0,0.3);
+        }
+
+    }
+
+}

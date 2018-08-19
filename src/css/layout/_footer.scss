@@ -3,4 +3,8 @@
 // -----------------------------------------------------------------------------
 .footer{
     grid-area: footer-start / 1 / footer-end / -1;
+
+    display: flex;
+    align-items: center;
+
 }
