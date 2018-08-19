@@ -24,11 +24,12 @@
         &:first-child {
             margin: 0;
         }
-        &:hover {
+        &:not(.choosingPage__item--selected):not(.choosingPage__item--not-selected):hover {
             transition-duration: 0.3s;
             background-color: darken($back-color, 1);
         }
         &--selected {
+            cursor: default;
             margin: 0;
             &:first-child {
                 transform: translateX(50%) translateY(-10rem);
@@ -38,6 +39,7 @@
             }
         }
         &--not-selected {
+            cursor: default;
             opacity: 0;
             visibility: hidden;
             margin: 0;
