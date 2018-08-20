@@ -4,8 +4,6 @@ CodeShare is a cross-platform collaborative code editor, designed to be a robust
 
 CodeShare gives developers the ability to run code on multiple devices using docker -for now, it can only run HTML and others will be added soon-.
 
-CodeShare has the capability of handling question and answers inside the platform.
-
 ## Demo
 ![CodeShare 1-0](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-0.gif)
 ![CodeShare 1-1](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-1.jpg)
