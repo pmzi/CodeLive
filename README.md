@@ -1,6 +1,6 @@
 # CodeShare
 
-CodeShare is a cross-platform application for development teaching which can developers share the live view and run of the code with others on the local network -it will be available online soon- which is written in javascript using electronJs.
+CodeShare is a cross-platform collaborative code editor, designed to be a robust tool to teach programming languages in a class without the need of a bigger screen.
 
 CodeShare gives developers the ability to run code on multiple devices using docker -for now, it can only run HTML and others will be added soon-.
 
@@ -17,7 +17,7 @@ git clone https://github.com/pmzi/CodeShare.git
 #
 Installing dependencies:
 ```
-cd /CodeShare
+cd CodeShare/
 npm install
 ```
 #
