@@ -26,3 +26,5 @@ Running the Project:
 npm start
 ```
 
+# Lisence
+BSD 3-Clause
