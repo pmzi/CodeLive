@@ -26,9 +26,9 @@ Running the Project:
 npm start
 ```
 
-# Demo
+## Demo
 ![CodeShare 1-0](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-0.gif)
 ![CodeShare 1-1](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-1.jpg)
 ![CodeShare 1-2](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-2.jpg)
-# Lisence
+## Lisence
 BSD 3-Clause
