@@ -6,7 +6,10 @@ CodeShare gives developers the ability to run code on multiple devices using doc
 
 CodeShare has the capability of handling question and answers inside the platform.
 
-#
+## Demo
+![CodeShare 1-0](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-0.gif)
+![CodeShare 1-1](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-1.jpg)
+![CodeShare 1-2](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-2.jpg)
 
 ## Installation Guide
 
@@ -26,9 +29,5 @@ Running the Project:
 npm start
 ```
 
-## Demo
-![CodeShare 1-0](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-0.gif)
-![CodeShare 1-1](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-1.jpg)
-![CodeShare 1-2](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-2.jpg)
-## Lisence
+# Lisence
 BSD 3-Clause
