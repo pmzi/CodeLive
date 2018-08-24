@@ -564,14 +564,14 @@ This is for material icons font icon
 #wrapper {
   width: 100%;
   height: 100%;
-  background-color: #1e272e;
+  background-color: #251d29;
   display: grid;
   grid-template-rows: [header-start] 4rem [header-end main-start] 1fr [main-end footer-start] 3rem [footer-end];
   grid-template-columns: repeat(12, 1fr); }
 
 .header {
   grid-area: header-start / 1 / header-end / -1;
-  background-color: #1a2228;
+  background-color: #291f2ced;
   display: flex;
   padding: 0 1rem;
   align-items: center;
