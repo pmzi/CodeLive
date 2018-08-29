@@ -764,8 +764,6 @@ This is for material icons font icon
   display: flex;
   flex-direction: column;
   padding: 0 1rem; }
-  .users__heading {
-    text-shadow: 0 0 0.5rem white; }
   .users__user {
     padding: 1rem 0;
     display: flex;
