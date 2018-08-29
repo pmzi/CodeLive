@@ -578,7 +578,6 @@ This is for material icons font icon
   justify-content: center; }
   .header__ip-address {
     color: #27ca73;
-    text-shadow: 0 0 0.5rem #02af53;
     flex-grow: 1;
     text-align: center; }
   .header__left-side {
