@@ -12,35 +12,35 @@
 </head>
 
 <body>
+    <div id="app">
+        <div id="wrapper" class="server">
 
-    <div id="wrapper" class="server">
-
-        <header class="header">
-            <div class="header__left-side">
-                <div class="header__side-icon">
-                    <i class="material-icons icon icon--red icon--clickable">
-                        power_settings_new
-                    </i>
+            <header class="header">
+                <div class="header__left-side">
+                    <div class="header__side-icon">
+                        <i class="material-icons icon icon--red icon--clickable">
+                            power_settings_new
+                        </i>
+                    </div>
                 </div>
-            </div>
-            <div class="header__ip-address">
-                127.0.0.1:2020
-            </div>
-            <div class="header__right-side">
-                <div class="header__side-icon">
-                    <i class="material-icons icon icon--green icon--clickable">
-                        play_arrow
-                    </i>
+                <div class="header__ip-address">
+                    127.0.0.1:2020
                 </div>
+                <div class="header__right-side">
+                    <div class="header__side-icon">
+                        <i class="material-icons icon icon--green icon--clickable">
+                            play_arrow
+                        </i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="editorWrapper">
+                <div id="monaco-editor" class="monaco-editor"></div>
             </div>
-        </header>
 
-        <div class="editorWrapper">
-            <div id="monaco-editor" class="monaco-editor"></div>
-        </div>
-
-        <aside class="aside">
-            <!-- <div class="question">
+            <aside class="aside">
+                <!-- <div class="question">
                 <h3 class="question__heading">
                     Questions
                 </h3>
@@ -59,11 +59,11 @@
                     </div>
                 </div>
             </div> -->
-            <div class="users">
-                <h3 class="users__heading">
-                    Joined Users
-                </h3>
-                <!-- <div class="users__user">
+                <div class="users">
+                    <h3 class="users__heading">
+                        Joined Users
+                    </h3>
+                    <!-- <div class="users__user">
                     <div class="users__username">
                         Computer Name
                     </div>
@@ -76,130 +76,116 @@
                         </i>
                     </div>
                 </div> -->
-            </div>
-        </aside>
-
-        <footer class="footer">
-
-            <div class="languageSelect">
-                <div class="languageSelect__selected-text">
-                    <img src="../images/js.png" alt=""> JavaScript
                 </div>
-                <div class="languageSelect__items-wrapper">
-                    <div data-name="js" class="languageSelect__item">
+            </aside>
+
+            <footer class="footer">
+
+                <div class="languageSelect">
+                    <div class="languageSelect__selected-text">
                         <img src="../images/js.png" alt=""> JavaScript
                     </div>
-                    <div data-name="js" class="languageSelect__item">
-                        <img src="../images/js.png" alt=""> JavaScript
-                    </div>
-                    <div data-name="js" class="languageSelect__item">
-                        <img src="../images/js.png" alt=""> JavaScript
+                    <div class="languageSelect__items-wrapper">
+                        <div data-name="js" class="languageSelect__item">
+                            <img src="../images/js.png" alt=""> JavaScript
+                        </div>
+                        <div data-name="js" class="languageSelect__item">
+                            <img src="../images/js.png" alt=""> JavaScript
+                        </div>
+                        <div data-name="js" class="languageSelect__item">
+                            <img src="../images/js.png" alt=""> JavaScript
+                        </div>
                     </div>
                 </div>
+
+                <div class="clientActions">
+                    <div class="clientActions__action">
+                        <i class="material-icons">
+                            cloud_download
+                        </i>
+                    </div>
+                </div>
+
+                <div class="connectionState">
+                    <i class="connectionState__state connectionState__state--connected"></i>
+                </div>
+
+            </footer>
+        </div>
+
+        <div class="choosingPage">
+
+            <div data-action="create" class="choosingPage__item choice">
+
+                <img src="../images/networking.png" alt="">
+
+                <span>
+                    Create a Group
+                </span>
+
             </div>
 
-            <div class="clientActions">
-                <div class="clientActions__action">
-                    <i class="material-icons">
-                        cloud_download
+            <div data-action="join" class="choosingPage__item choice">
+
+                <img src="../images/networking.png" alt="">
+
+                <span>
+                    Join a Group
+                </span>
+
+            </div>
+
+            <div class="choosingPage__loading">
+
+                <div class="spinner">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+
+            </div>
+
+            <div class="choosingPage__address-wrapper">
+
+                <input type="text" class="input input--center" placeholder="IP Address">
+
+            </div>
+
+        </div>
+
+        <div class="HTMLRunner">
+            <iframe class="HTMLRunner__iframe" src="" frameborder="0">
+
+            </iframe>
+
+            <div class="HTMLRunner__toolbox">
+                <div class="HTMLRunner__tool">
+                    <i class="material-icons icon icon--clickable icon--red">
+                        close
+                    </i>
+                </div>
+                <div class="HTMLRunner__tool">
+                    <i class="material-icons icon icon--clickable icon--blue">
+                        refresh
+                    </i>
+                </div>
+                <div class="HTMLRunner__tool">
+                    <i class="material-icons icon icon--clickable icon--green">
+                        code
                     </i>
                 </div>
             </div>
 
-            <div class="connectionState">
-                <i class="connectionState__state connectionState__state--connected"></i>
-            </div>
-
-        </footer>
-    </div>
-
-    <div class="choosingPage">
-
-        <div data-action="create" class="choosingPage__item choice">
-
-            <img src="../images/networking.png" alt="">
-
-            <span>
-                Create a Group
-            </span>
-
-        </div>
-
-        <div data-action="join" class="choosingPage__item choice">
-
-            <img src="../images/networking.png" alt="">
-
-            <span>
-                Join a Group
-            </span>
-
-        </div>
-
-        <div class="choosingPage__loading">
-
-            <div class="spinner">
-                <div class="bounce1"></div>
-                <div class="bounce2"></div>
-                <div class="bounce3"></div>
-            </div>
-
-        </div>
-
-        <div class="choosingPage__address-wrapper">
-
-            <input type="text" class="input input--center" placeholder="IP Address">
-
-        </div>
-
-    </div>
-
-    <div class="HTMLRunner">
-        <iframe class="HTMLRunner__iframe" src="" frameborder="0">
-
-        </iframe>
-
-        <div class="HTMLRunner__toolbox">
-            <div class="HTMLRunner__tool">
-                <i class="material-icons icon icon--clickable icon--red">
-                    close
-                </i>
-            </div>
-            <div class="HTMLRunner__tool">
-                <i class="material-icons icon icon--clickable icon--blue">
-                    refresh
-                </i>
-            </div>
-            <div class="HTMLRunner__tool">
-                <i class="material-icons icon icon--clickable icon--green">
-                    code
-                </i>
-            </div>
-        </div>
-
-        <div class="HTMLRunner__console">
-            <!-- <div class="HTMLRunner__console-log">
+            <div class="HTMLRunner__console">
+                <!-- <div class="HTMLRunner__console-log">
                 
             </div> -->
-        </div>
+            </div>
 
+        </div>
     </div>
 
-    <script src="../js/helpers/elementHelper.js"></script>
-
-    <script>
-        require('../js/views/start/Mainpage');
-    </script>
-
-
-    <!-- Monaco Editor Configs -->
-
-    <script>
-        // Monaco uses a custom amd loader that overrides node's require.
-        // Keep a reference to node's require so we can restore it after executing the amd loader file.
-        var nodeRequire = global.require;
-    </script>
-    <script src="../../node_modules/monaco-editor/min/vs/loader.js"></script>
-    <script src="../js/views/start/MonacoEditor.js"></script>
+    <script src="../js/dist/bundle.js"></script>
 
 </body>
 
