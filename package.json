@@ -7,8 +7,7 @@
   "scripts": {
     "sass:compile": "node-sass src/css/main.scss src/css/main.css -w",
     "forge:start": "electron-forge start",
-    "bundle:watch": "webpack --w",
-    "start": "npm-run-all --parallel bundle:watch forge:start sass:compile",
+    "start": "npm-run-all --parallel forge:start sass:compile",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
