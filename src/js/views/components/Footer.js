@@ -1,16 +1,16 @@
 const React = require('react');
 
-const languageSelect = require('./LanguageSelect');
+const LanguageSelect = require('./LanguageSelect');
 const ClientActions = require('./ClientActions');
 const ConnectionState = require('./ConnectionState');
 
 class Footer extends React.Component{
-
+    
     render(){
         return (
             <footer className="footer">
 
-                <languageSelect />
+                <LanguageSelect />
 
                 <ClientActions />
 

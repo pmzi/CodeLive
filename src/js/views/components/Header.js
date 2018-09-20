@@ -2,6 +2,8 @@ const React = require('react');
 
 const Icon = require('./Icon');
 
+const Runner = require('../controllers/Runner');
+
 class Header extends React.Component{
 
     render(){
@@ -9,7 +11,7 @@ class Header extends React.Component{
             <header className="header">
                 <div className="header__left-side">
                     <div className="header__side-icon">
-                        <Icon clickable={true} color='red' icon='power_settings_new' />
+                        <Icon onClick={this.disconnect} ref='disconnect' clickable={true} color='red' icon='power_settings_new' />
                     </div>
                 </div>
                 <div className="header__ip-address">
@@ -17,11 +19,34 @@ class Header extends React.Component{
                 </div>
                 <div className="header__right-side">
                     <div className="header__side-icon">
-                        <Icon clickable={true} color='green' icon='play_arrow' />
+                        <Icon onClick={this.run} ref='run' clickable={true} color='green' icon='play_arrow' />
                     </div>
                 </div>
             </header>
         );
+    }
+
+    run(){
+        server.emit({}, "runHTML");
+
+            Runner.runHTML(mainEditor.getValue());
+    }
+
+    disconnect(){
+        server.disconnect();
+
+            // Let's show the choosingPage
+
+            $('.choosingPage').classList.remove('none');
+            setTimeout(() => {
+
+                $('.choosingPage').classList.remove('choosingPage--fadeOut');
+                $('.choosingPage__address-wrapper').classList.remove('choosingPage__address-wrapper--show');
+                $('.choosingPage__loading').classList.remove('choosingPage__loading--show');
+                $('.choosingPage .choosingPage__item--selected').classList.remove('choosingPage__item--selected');
+                $('.choosingPage .choosingPage__item--not-selected').classList.remove('choosingPage__item--not-selected');
+
+            }, 100)
     }
 
 }

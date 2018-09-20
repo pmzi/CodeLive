@@ -4,6 +4,14 @@ const LanguageItem = require('./subComponents/LanguageItem');
 
 class LanguageSelect extends React.Component{
 
+    constructor(props){
+        super(props)
+        this.state = {
+            image:'',
+            name:''
+        }
+    }
+
     get languages(){
         return;
     }

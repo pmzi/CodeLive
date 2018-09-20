@@ -6,10 +6,14 @@ const mainStore = require('./stores/mainStore');
 
 const MainPage = require('./components/MainPage');
 
+const Server = require('./controllers/Server');
+
+window.server = new Server();
+
 const jsx = (
     <Provider store={mainStore}>
         <MainPage />
     </Provider>
 );
 
-ReactDOM.render(<MainPage />, document.querySelector('#app'));
+ReactDOM.render(jsx, document.querySelector('#app'));
