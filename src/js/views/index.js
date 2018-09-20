@@ -1,7 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
-const ChoosingPage = require('./components/ChoosingPage');
+const MainPage = require('./components/MainPage');
 
-ReactDOM.render(<ChoosingPage />, document.querySelector('#app'));
-console.log("salam")
+ReactDOM.render(<MainPage />, document.querySelector('#app'));
