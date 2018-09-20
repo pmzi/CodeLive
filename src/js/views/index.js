@@ -8,7 +8,7 @@ const MainPage = require('./components/MainPage');
 
 const Server = require('./controllers/Server');
 
-window.server = new Server();
+window.server = new Server(mainStore);
 
 const jsx = (
     <Provider store={mainStore}>

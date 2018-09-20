@@ -10,7 +10,9 @@ const OS = require('os');
 
 class Server {
 
-    constructor() {
+    constructor(store) {
+
+        this.store = store;
 
         this.server = server;
 
@@ -177,20 +179,27 @@ class Server {
         console.log("Joined");
 
         socket.on('join', (data) => {
-            $('.users').append(`
-            <div class="users__user" data-id="${socket.id}">
-                <div class="users__username">
-                    ${data}
-                </div>
-                <!-- <div class="users__actions">
-                    <!-- <i class="material-icons icon icon--red icon--clickable">
-                        close
-                    </i> -->
-                    <!-- <i class="material-icons icon icon--green icon--clickable">
-                        done
-                    </i> -->
-                </div> -->
-        </div>`);
+
+            this.store.dispatch({
+                type: 'JOIN',
+                userName: data,
+                socket
+            });
+
+        //     $('.users').append(`
+        //     <div class="users__user" data-id="${socket.id}">
+        //         <div class="users__username">
+        //             ${data}
+        //         </div>
+        //         <!-- <div class="users__actions">
+        //             <!-- <i class="material-icons icon icon--red icon--clickable">
+        //                 close
+        //             </i> -->
+        //             <!-- <i class="material-icons icon icon--green icon--clickable">
+        //                 done
+        //             </i> -->
+        //         </div> -->
+        // </div>`);
         });
 
         socket.on('disconnect', () => {
