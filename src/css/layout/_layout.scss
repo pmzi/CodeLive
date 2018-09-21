@@ -13,3 +13,13 @@
     grid-template-columns: repeat(12, 1fr); 
 
 }
+.server{
+    .onlyForClient{
+        display: none!important;
+    }
+}
+.client{
+    .onlyForServer{
+        display: none!important;
+    }
+}
