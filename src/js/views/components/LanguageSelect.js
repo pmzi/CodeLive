@@ -2,27 +2,75 @@ const React = require('react');
 
 const LanguageItem = require('./subComponents/LanguageItem');
 
+import { connect } from 'react-redux';
+
 class LanguageSelect extends React.Component{
 
     constructor(props){
         super(props)
         this.state = {
-            image:'',
-            name:''
+            languages: [{
+                name: 'HTML',
+                image:'html.png',
+                latinName: 'html'
+            },{
+                name: 'JavaScript',
+                image: 'js.png',
+                latinName:'javascript'
+            },{
+                name:'C/C++',
+                image:'cpp.png',
+                latinName: 'cpp'
+            }],
+            show: false
         }
     }
 
     get languages(){
-        return;
+        let languages = [];
+        for(let language of this.state.languages){
+            languages.push(<div key={language.name} data-name={language.latinName} className="languageSelect__item">
+                <img src={`../images/${language.image}`} alt="" /> <span>{language.name}</span>
+            </div>);
+        }
+        return languages;
+    }
+
+    get showClass(){
+        return this.state.show ? 'languageSelect__items-wrapper--show' : '';
+    }
+
+    componentDidMount(){
+        this.refs.selectedLanguage.onclick = ()=>{
+            this.setState((prevState)=>{
+                return prevState.show ? {show: false} : {show:true};
+            })
+        }
+
+        let that = this;
+
+        for(let language of this.refs.languageList.children){
+            language.onclick = function(){
+                let name = this.children[1].textContent;
+                let image = this.children[0].src.split('/').pop();
+                let latinName = this.getAttribute('data-name');
+                that.props.dispatch({
+                    type: 'SELECTED_LANGUAGE_CHANGED',
+                    name,
+                    image,
+                    latinName
+                });
+            }
+        }
     }
 
     render(){
         return (
             <div className="languageSelect">
-                <div className="languageSelect__selected-text">
-                    <img src={`../images/${this.state.image}`} alt={this.state.name} /> {this.state.name}
+                <div ref='selectedLanguage' className="languageSelect__selected-text">
+                    <img src={`../images/${this.props.selected.image}`} alt={this.props.selected.latinName} /> {this.props.selected.name}
                 </div>
-                <div className="languageSelect__items-wrapper">
+                <div ref='languageList' className={`languageSelect__items-wrapper ${this.showClass}`}>
                     {this.languages}                    
                 </div>
             </div>
@@ -31,4 +79,8 @@ class LanguageSelect extends React.Component{
 
 }
 
-module.exports = LanguageSelect;
+module.exports = connect((state)=>{
+    return {
+        selected: state.selectedLanguage
+    }
+})(LanguageSelect);

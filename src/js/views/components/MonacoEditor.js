@@ -1,5 +1,7 @@
 const React = require('react');
 
+import { connect } from 'react-redux';
+
 class MonacoEditor extends React.Component{
 
     constructor(props){
@@ -25,7 +27,11 @@ class MonacoEditor extends React.Component{
 			baseUrl: uriFromPath(path.join(__dirname, '../../../../node_modules/monaco-editor/min'))
 		});
 		// workaround monaco-css not understanding the environment
-		self.module = undefined;
+        self.module = undefined;
+        
+
+        let selectedLanguage = this.props.selectedLanguage.name.toLowerCase();
+
 		amdRequire(['vs/editor/editor.main'], ()=>{
 			this._editor = monaco.editor.create(document.getElementById('monaco-editor'), {
                 value: `<html>
@@ -42,7 +48,7 @@ class MonacoEditor extends React.Component{
                 
     </body>
     </html>`,
-                language: 'html',
+                language: selectedLanguage,
                 theme:'vs-dark'
             });
             
@@ -57,6 +63,11 @@ class MonacoEditor extends React.Component{
             }
         });
 
+    }
+
+    componentDidUpdate(){
+        let selectedLanguage = this.props.selectedLanguage.latinName.toLowerCase();
+        monaco.editor.setModelLanguage(this._editor.getModel(), selectedLanguage)
     }
 
     initSocketEvents(){
@@ -90,4 +101,8 @@ class MonacoEditor extends React.Component{
 
 }
 
-module.exports = MonacoEditor;
+module.exports = connect((state)=>{
+    return {
+        selectedLanguage: state.selectedLanguage
+    };
+})(MonacoEditor);
