@@ -224,6 +224,8 @@ class Server {
 
         socket.emit("data", window.mainEditor.getValue());
 
+        socket.emit("languageChanged", this.store.getState().selectedLanguage);
+
         socket.emit("cursorChange", {
             selections: window.mainEditor.getSelections()
         });
