@@ -15,8 +15,8 @@
     justify-content: center;
 
     &__ip-address{
-        color: #8e44ad;
-        text-shadow: 0 0 0.5rem #8e44ad;
+        color: $brand-color;
+        text-shadow: 0 0 0.5rem $brand-color;
         flex-grow: 1;    
         text-align: center;
     }
