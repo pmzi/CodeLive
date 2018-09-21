@@ -1,5 +1,7 @@
 const React = require('react');
 
+import { connect } from 'react-redux';
+
 const fs = require('fs');
 const Dialog = require('../../helpers/Dialog');
 
@@ -10,8 +12,8 @@ class ClientActions extends React.Component{
     render(){
         return (
             <div className="clientActions">
-                <div className="clientActions__action">
-                    <Icon onClick={this.downloadSource} icon='cloud_download' clickable={true} />
+                <div onClick={this.downloadSource.bind(this)} className="clientActions__action">
+                    <Icon icon='cloud_download' clickable={true} />
                 </div>
             </div>
         );
@@ -19,11 +21,15 @@ class ClientActions extends React.Component{
 
     downloadSource(){
         let path = Dialog.chooseDirectory();
-            if(path){
-                fs.writeFileSync(`${path}/${Date.now()}.html`,window.mainEditor.getValue());
-            }
+        if(path){
+            fs.writeFileSync(`${path}/${Date.now()}.${this.props.selectedLanguage.extention}`,window.mainEditor.getValue());
+        }
     }
 
 }
 
-module.exports = ClientActions;
+module.exports = connect((state)=>{
+    return {
+        selectedLanguage: state.selectedLanguage
+    };
+})(ClientActions);
