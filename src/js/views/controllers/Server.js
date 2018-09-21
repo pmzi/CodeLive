@@ -220,20 +220,14 @@ class Server {
             this.store.dispatch({type:'USER_DISCONNECT',socket})
         })
 
+        socket.on('letsSync', ()=>{
+            console.log('salam')
+            this.sync(socket)
+        });
+
         // Let's send them current data
 
-        socket.emit("data", window.mainEditor.getValue());
-
-        socket.emit("languageChanged", this.store.getState().selectedLanguage);
-
-        socket.emit("cursorChange", {
-            selections: window.mainEditor.getSelections()
-        });
-
-        socket.emit("scrollChange", {
-            scrollLeft: window.mainEditor.getScrollLeft(),
-            scrollTop: window.mainEditor.getScrollTop()
-        });
+        this.sync(socket)
 
     }
 
@@ -256,14 +250,34 @@ class Server {
 
     emit(data, event) {
 
-        // type 1 is cursor change
-
         if (this.isServer) {
 
             this.io.emit(event, data);
 
         }
 
+    }
+
+    clientEmit(data, event){
+        if(!this.isServer){
+            this.socket.emit(event, data);
+        }
+        
+    }
+
+    sync(socket){
+        socket.emit("data", window.mainEditor.getValue());
+
+        socket.emit("languageChanged", this.store.getState().selectedLanguage);
+
+        socket.emit("cursorChange", {
+            selections: window.mainEditor.getSelections()
+        });
+
+        socket.emit("scrollChange", {
+            scrollLeft: window.mainEditor.getScrollLeft(),
+            scrollTop: window.mainEditor.getScrollTop()
+        });
     }
 
     reduxChanged(){
