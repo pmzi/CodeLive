@@ -65,6 +65,9 @@ class LanguageSelect extends React.Component{
                     latinName,
                     extention
                 });
+                that.setState({
+                    show:false
+                })
             }
         }
     }
