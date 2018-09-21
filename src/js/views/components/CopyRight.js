@@ -7,7 +7,7 @@ class CopyRight extends React.Component{
     render(){
         return (
             <div className='copyRight'>
-                Developed By <Link href='https://github.com/pmzi/CodeShare'>Pouya MozaffarMagham</Link>
+                Fork Me On <Link href='https://github.com/pmzi/CodeShare'>GitHub</Link>
             </div>
         );
     }
