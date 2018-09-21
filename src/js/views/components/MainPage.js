@@ -20,7 +20,6 @@ class MainPage extends React.Component{
                     <Footer />
                 </div>  
                 <ChoosingPage />
-                <HTMLRunner />
             </React.Fragment>
         );
     }
