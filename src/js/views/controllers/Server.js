@@ -173,7 +173,8 @@ class Server {
                 type: 'SELECTED_LANGUAGE_CHANGED',
                 name: newLanguage.name,
                 latinName: newLanguage.latinName,
-                image: newLanguage.image
+                image: newLanguage.image,
+                extention: newLanguage.extention
             })
         })
 
