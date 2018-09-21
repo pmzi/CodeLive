@@ -3,6 +3,7 @@ const React = require('react');
 const LanguageSelect = require('./LanguageSelect');
 const ClientActions = require('./ClientActions');
 const ConnectionState = require('./ConnectionState');
+const CopyRight = require('./CopyRight');
 
 class Footer extends React.Component{
     
@@ -11,6 +12,8 @@ class Footer extends React.Component{
             <footer className="footer">
 
                 <LanguageSelect />
+
+                <CopyRight />
 
                 <ClientActions />
 
