@@ -12,15 +12,18 @@ class LanguageSelect extends React.Component{
             languages: [{
                 name: 'HTML',
                 image:'html.png',
-                latinName: 'html'
+                latinName: 'html',
+                extention: 'html'
             },{
                 name: 'JavaScript',
                 image: 'js.png',
-                latinName:'javascript'
+                latinName:'javascript',
+                extention: 'js'
             },{
                 name:'C/C++',
                 image:'cpp.png',
-                latinName: 'cpp'
+                latinName: 'cpp',
+                extention: 'cpp'
             }],
             show: false
         }
@@ -29,7 +32,7 @@ class LanguageSelect extends React.Component{
     get languages(){
         let languages = [];
         for(let language of this.state.languages){
-            languages.push(<div key={language.name} data-name={language.latinName} className="languageSelect__item">
+            languages.push(<div key={language.name} data-extention={language.extention} data-name={language.latinName} className="languageSelect__item">
                 <img src={`../images/${language.image}`} alt="" /> <span>{language.name}</span>
             </div>);
         }
@@ -54,11 +57,13 @@ class LanguageSelect extends React.Component{
                 let name = this.children[1].textContent;
                 let image = this.children[0].src.split('/').pop();
                 let latinName = this.getAttribute('data-name');
+                let extention = this.getAttribute('data-extention');
                 that.props.dispatch({
                     type: 'SELECTED_LANGUAGE_CHANGED',
                     name,
                     image,
-                    latinName
+                    latinName,
+                    extention
                 });
             }
         }
