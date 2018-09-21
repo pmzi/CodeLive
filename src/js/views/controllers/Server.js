@@ -52,6 +52,12 @@ class Server {
 
             this.server.listen(2020);
 
+            // let's listen for redux change
+
+            this.state = this.store.getState();
+
+            this.store.subscribe(this.reduxChanged.bind(this));
+
             // Let's set the admin class
 
             $('#wrapper').classList = 'server';
@@ -170,6 +176,15 @@ class Server {
             Runner.reloadHTML()
         })
 
+        socket.on("languageChanged",(newLanguage)=>{
+            this.store.dispatch({
+                type: 'SELECTED_LANGUAGE_CHANGED',
+                name: newLanguage.name,
+                latinName: newLanguage.latinName,
+                image: newLanguage.image
+            })
+        })
+
         socket.on("disconnect", () => {
             this.store.dispatch({type:'CONNECTION_LOST'});
         })
@@ -254,6 +269,22 @@ class Server {
 
         }
 
+    }
+
+    reduxChanged(){
+        let state = this.store.getState();
+        
+        if(state.selectedLanguage.latinName != this.state.selectedLanguage.latinName){
+            // changed
+            this.emitLanguageChanged(state.selectedLanguage);
+        }
+
+        this.state = state;
+
+    }
+
+    emitLanguageChanged(newLanguage){
+        this.emit(newLanguage,'languageChanged');
     }
 
 }
