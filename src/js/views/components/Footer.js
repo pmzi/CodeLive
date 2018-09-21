@@ -13,9 +13,9 @@ class Footer extends React.Component{
 
                 <LanguageSelect />
 
-                <CopyRight />
-
                 <ClientActions />
+
+                <CopyRight />
 
                 <ConnectionState />
 
