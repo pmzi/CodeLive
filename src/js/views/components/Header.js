@@ -2,7 +2,9 @@ const React = require('react');
 
 const Icon = require('./Icon');
 
-const Runner = require('../controllers/Runner');
+import { connect } from 'react-redux';
+
+const Compiler = require('../compilers/Compiler');
 
 class Header extends React.Component{
 
@@ -19,7 +21,7 @@ class Header extends React.Component{
                 </div>
                 <div className="header__right-side">
                     <div className="header__side-icon">
-                        <Icon onClick={this.run} ref='run' clickable={true} color='green' icon='play_arrow' />
+                        <Icon onClick={this.run.bind(this)} ref='run' clickable={true} color='green' icon='play_arrow' />
                     </div>
                 </div>
             </header>
@@ -27,9 +29,11 @@ class Header extends React.Component{
     }
 
     run(){
-        server.emit({}, "runHTML");
 
-            Runner.runHTML(mainEditor.getValue());
+        server.emit({},'run');
+
+        Compiler.compile(this.props.selectedLanguage.latinName, mainEditor.getValue());
+
     }
 
     disconnect(){
@@ -51,4 +55,8 @@ class Header extends React.Component{
 
 }
 
-module.exports = Header;
+module.exports = connect((state)=>{
+    return {
+        selectedLanguage: state.selectedLanguage
+    };
+})(Header);

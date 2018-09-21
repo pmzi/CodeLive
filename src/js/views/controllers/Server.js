@@ -4,7 +4,7 @@ const socket = require('socket.io-client');
 
 const server = require('http');
 
-const Runner = require("./Runner");
+const Compiler = require("../compilers/Compiler");
 
 const OS = require('os');
 
@@ -164,16 +164,8 @@ class Server {
 
         });
 
-        socket.on("runHTML", () => {
-            Runner.runHTML(window.mainEditor.getValue())
-        })
-
-        socket.on("hideHTML", () => {
-            Runner.hideHTML()
-        })
-
-        socket.on("reloadHTML", () => {
-            Runner.reloadHTML()
+        socket.on("run",()=>{
+            Compiler.compile(this.store.getState().selectedLanguage.latinName, mainEditor.getValue());
         })
 
         socket.on("languageChanged",(newLanguage)=>{
