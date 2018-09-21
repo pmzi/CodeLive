@@ -6,7 +6,6 @@ const SideBar = require('./SideBar');
 const Footer = require('./Footer');
 
 const ChoosingPage = require('./ChoosingPage');
-const HTMLRunner = require('./HTMLRunner');
 
 class MainPage extends React.Component{
 
