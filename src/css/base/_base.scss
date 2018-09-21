@@ -39,8 +39,10 @@ a {
   color: $brand-color;
   text-decoration: none;
 
+  transition-duration: 0.3s;
+
   @include on-event {
     color: $text-color;
-    text-decoration: underline;
+    transition-duration: 0.3s;
   }
 }
