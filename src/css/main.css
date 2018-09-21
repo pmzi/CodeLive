@@ -432,7 +432,7 @@ html, body {
  * Basic styles for links
  */
 a {
-  color: #e50050;
+  color: #27ca73;
   text-decoration: none; }
   a:hover, a:active, a:focus {
     color: white;
@@ -460,7 +460,7 @@ This is for icon font
  * Basic typography style for copy text
  */
 body {
-  color: white;
+  color: #27ca73;
   font: normal 160% "isans", "Raleway", "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif; }
 
 /*
@@ -564,21 +564,20 @@ This is for material icons font icon
 #wrapper {
   width: 100%;
   height: 100%;
-  background-color: #1e272e;
+  background-color: #251d29;
   display: grid;
   grid-template-rows: [header-start] 4rem [header-end main-start] 1fr [main-end footer-start] 3rem [footer-end];
   grid-template-columns: repeat(12, 1fr); }
 
 .header {
   grid-area: header-start / 1 / header-end / -1;
-  background-color: #1a2228;
+  background-color: #291f2ced;
   display: flex;
   padding: 0 1rem;
   align-items: center;
   justify-content: center; }
   .header__ip-address {
-    color: #8e44ad;
-    text-shadow: 0 0 0.5rem #8e44ad;
+    color: #27ca73;
     flex-grow: 1;
     text-align: center; }
   .header__left-side {
@@ -764,8 +763,6 @@ This is for material icons font icon
   display: flex;
   flex-direction: column;
   padding: 0 1rem; }
-  .users__heading {
-    text-shadow: 0 0 0.5rem white; }
   .users__user {
     padding: 1rem 0;
     display: flex;
@@ -830,7 +827,7 @@ This is for material icons font icon
 .spinner > div {
   width: 18px;
   height: 18px;
-  background-color: #465b6c;
+  background-color: #20be6a;
   border-radius: 100%;
   display: inline-block;
   -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
@@ -866,7 +863,7 @@ This is for material icons font icon
   box-sizing: content-box;
   background-color: transparent;
   border: 0;
-  border-bottom: 0.2rem solid #8e44ad;
+  border-bottom: 0.2rem solid #27ca73;
   caret-color: white;
   color: white; }
   .input--center {
@@ -880,7 +877,7 @@ This is for material icons font icon
   position: fixed;
   top: 0px;
   right: 0;
-  background-color: #1e272e;
+  background-color: #251d29;
   display: flex;
   justify-content: center;
   align-items: center;
