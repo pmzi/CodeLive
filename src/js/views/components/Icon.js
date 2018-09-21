@@ -11,7 +11,7 @@ class Icon extends React.Component{
 
     render(){
         return (
-            <i onClick={this.props.onClick} className={`material-icons icon ${this.iconColorClass} ${this.props.clickable ? 'icon--clickable' : ''}`}>
+            <i onClick={this.props.onClick} className={`material-icons icon ${this.props.className ? this.props.className : ''} ${this.iconColorClass} ${this.props.clickable ? 'icon--clickable' : ''}`}>
                 {this.props.icon}
             </i>
         );
