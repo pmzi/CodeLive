@@ -14,6 +14,8 @@ class Server {
 
         this.store = store;
 
+        this.joinedSockets = [];
+
         this.server = server;
 
         this.isServer = false;
@@ -35,9 +37,14 @@ class Server {
 
             this.io = io(this.server);
 
+            // Make the connection state connected
+            this.store.dispatch({type:'CONNECTION_RESOLVED'});
+
             this.io.on('connection', (client) => {
 
                 this.socket = client;
+
+                this.joinedSockets.push(socket)
 
                 this.handleServerSocket(client)
 
@@ -67,8 +74,7 @@ class Server {
             connectedSocket.on('connect', () => {
 
                 // Make the connection state connected
-                $('.connectionState__state').classList.remove('connectionState__state--disconnected');
-                $('.connectionState__state').classList.add('connectionState__state--connected');
+                this.store.dispatch({type:'CONNECTION_RESOLVED'});
 
                 clearInterval(socketInterval)
 
@@ -165,8 +171,7 @@ class Server {
         })
 
         socket.on("disconnect", () => {
-            $('.connectionState__state').classList.remove('connectionState__state--connected');
-            $('.connectionState__state').classList.add('connectionState__state--disconnected');
+            this.store.dispatch({type:'CONNECTION_LOST'});
         })
 
 
@@ -203,8 +208,8 @@ class Server {
         });
 
         socket.on('disconnect', () => {
-            console.log(socket)
-            $(`.users__user[data-id="${socket.id}"]`).remove();
+            console.log(socket,'disconnected')
+            this.store.dispatch({type:'USER_DISCONNECT',socket})
         })
 
         // Let's send them current data
@@ -227,7 +232,7 @@ class Server {
         if (this.isServer) {
             // It is a server
 
-            this.server.close();
+            this.server.close(()=>{console.log("Server Closed!")});
 
             // server is down!
 
