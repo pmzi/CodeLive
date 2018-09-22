@@ -5,7 +5,7 @@
   "description": "My Electron application description",
   "main": "src/js/app.js",
   "scripts": {
-    "sass:compile": "node-sass src/css/main.scss src/css/main.css -w",
+    "sass:compile": "node-sass src/css/main.scss src/css/main.css && node-sass src/css/main.scss src/css/main.css -w",
     "forge:start": "electron-forge start",
     "start": "npm-run-all --parallel forge:start sass:compile",
     "package": "electron-forge package",
