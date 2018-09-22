@@ -11,6 +11,10 @@ const ChoosingPage = require('./ChoosingPage');
 
 class MainPage extends React.Component{
 
+    componentDidUpdate(){
+        console.log(this.props.general.isServer)
+    }
+
     render(){
         return (
             <React.Fragment>

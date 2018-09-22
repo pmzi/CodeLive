@@ -17,7 +17,7 @@ class Header extends React.Component{
                     </div>
                 </div>
                 <div className="header__ip-address">
-                    127.0.0.1:2020
+                    127.0.0.1:{this.props.general.port}
                 </div>
                 <div className="header__right-side">
                     <div className="header__side-icon">
@@ -64,6 +64,7 @@ class Header extends React.Component{
 
 module.exports = connect((state)=>{
     return {
-        selectedLanguage: state.selectedLanguage
+        selectedLanguage: state.selectedLanguage,
+        general: state.general
     };
 })(Header);

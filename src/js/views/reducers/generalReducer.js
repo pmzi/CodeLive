@@ -1,17 +1,25 @@
-module.exports = (state = {isServer: false}, action)=>{
+module.exports = (state = {
+    isServer: false,
+    port: '2020'
+}, action) => {
 
-    switch(action.type){
+    switch (action.type) {
         case 'IS_SERVER':
-            return {
+            return Object.assign({}, state, {
                 isServer: true
-            }
-        break;
+            })
+            break;
         case 'IS_CLIENT':
-            return {
+            return Object.assign({}, state, {
                 isServer: false
-            }
-        break;
-        default: 
+            })
+            break;
+        case 'PORT_CHANGED':
+            return Object.assign({}, state, {
+                port: action.port
+            })
+            break;
+        default:
             return state;
         break;
     }

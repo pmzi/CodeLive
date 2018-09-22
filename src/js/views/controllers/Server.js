@@ -42,6 +42,13 @@ class Server {
 
             this.http.listen(port);
 
+            // Let's set the port
+
+            this.store.dispatch({
+                type: 'PORT_CHANGED',
+                port
+            })
+
             // Let's set the admin class
 
             this.store.dispatch({
