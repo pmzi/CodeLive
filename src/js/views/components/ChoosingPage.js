@@ -5,27 +5,47 @@ const Spinner = require('./Spinner');
 
 class ChoosingPage extends React.Component{
 
+    constructor(props){
+        super(props);
+
+        this.state = {
+            loadingShow: false,
+            addressWrapperShow: false,
+            selected: false,
+            createSelected: false,
+            joinSelected: false,
+            choosingPageFadeOut: false,
+            choosingPageNone: false,
+            addressInputHasError: false
+        };
+
+    }
+
     componentDidMount(){
 
         this.refs.create.onclick = async ()=>{
 
-            await this.refs.create.classList.add('choosingPage__item--selected');
-
-            this.refs.join.classList.add('choosingPage__item--not-selected');
-
-            this.refs.loading.classList.add('choosingPage__loading--show');
+            this.setState({
+                createSelected: true,
+                selected: true,
+                loadingShow: true
+            })
 
             // Let's create
 
             socketHandler.createServer().then(() => {
 
                 setTimeout(() => {
-                    this.refs.loading.classList.remove('choosingPage__loading--show');
-
-                    this.refs.choosingPage.classList.add('choosingPage--fadeOut');
+                    
+                    this.setState({
+                        loadingShow: false,
+                        choosingPageFadeOut: true
+                    })
 
                     setTimeout(() => {
-                        this.refs.choosingPage.classList.add('none');
+                        this.setState({
+                            choosingPageNone: true
+                        })
                     }, 500)
 
                 }, 500)
@@ -36,15 +56,18 @@ class ChoosingPage extends React.Component{
 
         this.refs.join.onclick = async()=>{
             
-            await this.refs.join.classList.add('choosingPage__item--selected');
-
-            this.refs.create.classList.add('choosingPage__item--not-selected');
+            this.setState({
+                joinSelected: true,
+                selected: true
+            })
 
             // Let's join
                     
             setTimeout(() => {
 
-                this.refs.addressWrapper.classList.add('choosingPage__address-wrapper--show');
+                this.setState({
+                    addressWrapperShow: true
+                })
 
                 let ipAddressInput = this.refs.addressWrapper.children[0];
 
@@ -58,21 +81,28 @@ class ChoosingPage extends React.Component{
 
                         let ipAddress = ipAddressInput.value;
 
-                        this.refs.loading.classList.add('choosingPage__loading--show');
+                        this.setState({
+                            loadingShow: true
+                        })
 
                         socketHandler.createClient(ipAddress).then(() => {
 
-                            ipAddressInput.classList.remove('input--error');
+                            this.setState({
+                                addressInputHasError: false
+                            })
 
                             setTimeout(() => {
 
-                                this.refs.loading.classList.remove('choosingPage__loading--show');
-
-                                this.refs.choosingPage.classList.add('choosingPage--fadeOut');
+                                this.setState({
+                                    loadingShow: false,
+                                    choosingPageFadeOut: true
+                                })
 
                                 setTimeout(() => {
 
-                                    this.refs.choosingPage.classList.add('none');
+                                    this.setState({
+                                        choosingPageNone: true
+                                    })
 
                                 }, 500)
 
@@ -80,9 +110,10 @@ class ChoosingPage extends React.Component{
 
                         }).catch(() => {
 
-                            this.refs.loading.classList.remove('choosingPage__loading--show');
-                            
-                            this.refs.addressWrapper.children[0].classList.add('input--error');
+                            this.setState({
+                                loadingShow: false,
+                                addressInputHasError: true
+                            })
 
                         });
                     }
@@ -92,13 +123,16 @@ class ChoosingPage extends React.Component{
             }, 500)
 
         }
+
     }
 
     render (){
         return (
-            <div ref='choosingPage' className="choosingPage">
+            <div className={`choosingPage ${this.state.choosingPageFadeOut ? 'choosingPage--fadeOut' : ''} ${this.state.choosingPageNone ? 'none' : ''}`}>
 
-                <div ref="create" className="choosingPage__item choice">
+                <div className={`choosingPage__item choice
+                 ${this.state.createSelected ? 'choosingPage__item--selected' : ''}
+                 ${this.state.selected && this.state.joinSelected ? 'choosingPage__item--not-selected' : ''}`}>
 
                     <img src="../images/networking.png" alt="" />
 
@@ -108,7 +142,9 @@ class ChoosingPage extends React.Component{
 
                 </div>
 
-                <div ref="join" className="choosingPage__item choice">
+                <div className={`choosingPage__item choice
+                 ${this.state.joinSelected ? 'choosingPage__item--selected' : ''}
+                 ${this.state.selected && this.state.createSelected ? 'choosingPage__item--not-selected' : ''}`}>
 
                     <img src="../images/networking.png" alt="" />
 
@@ -118,15 +154,15 @@ class ChoosingPage extends React.Component{
 
                 </div>
 
-                <div ref='loading' className="choosingPage__loading">
+                <div className={`choosingPage__loading ${this.state.loadingShow ? 'choosingPage__loading--show' : ''}`}>
 
                     <Spinner />
 
                 </div>
 
-                <div ref='addressWrapper' className="choosingPage__address-wrapper">
+                <div ref='addressWrapper' className={`choosingPage__address-wrapper ${this.state.addressWrapperShow ? 'choosingPage__address-wrapper--show': ''}`}>
 
-                    <Input center={true} placeholder='IP Address' />
+                    <Input className={this.state.addressInputHasError ? 'input--error':''} center={true} placeholder='IP Address' />
 
                 </div>
 
