@@ -25,7 +25,7 @@ class ChoosingPage extends React.Component{
 
                     // Let's create
 
-                    window.server.create().then(() => {
+                    socketHandler.createServer().then(() => {
 
                         setTimeout(() => {
                             $('.choosingPage__loading').classList.remove('choosingPage__loading--show');
@@ -60,7 +60,7 @@ class ChoosingPage extends React.Component{
 
                                 $('.choosingPage__loading').classList.add('choosingPage__loading--show');
 
-                                window.server.join(ipAddress).then(() => {
+                                socketHandler.createClient(ipAddress).then(() => {
 
                                     setTimeout(() => {
 

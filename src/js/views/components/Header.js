@@ -31,14 +31,15 @@ class Header extends React.Component{
 
     run(){
 
-        server.emit({},'run');
+        socketHandler.emit('run',{});
 
         Compiler.compile(this.props.selectedLanguage.latinName, mainEditor.getValue());
 
     }
 
     disconnect(){
-        server.disconnect();
+
+        socketHandler.disConnect();
 
         // Let's show the choosingPage
 
@@ -56,7 +57,7 @@ class Header extends React.Component{
 
     sync(){
         console.log("sync")
-        server.clientEmit({}, 'letsSync');
+        socketHandler.clientEmit('letsSync',{});
     }
 
 }

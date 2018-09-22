@@ -44,20 +44,30 @@ class LanguageSelect extends React.Component{
     }
 
     componentDidMount(){
+
         this.refs.selectedLanguage.onclick = ()=>{
+
             this.setState((prevState)=>{
+
                 return prevState.show ? {show: false} : {show:true};
+
             })
         }
 
         let that = this;
 
         for(let language of this.refs.languageList.children){
+
             language.onclick = function(){
+
                 let name = this.children[1].textContent;
+
                 let image = this.children[0].src.split('/').pop();
+
                 let latinName = this.getAttribute('data-name');
+
                 let extention = this.getAttribute('data-extention');
+
                 that.props.dispatch({
                     type: 'SELECTED_LANGUAGE_CHANGED',
                     name,
@@ -65,9 +75,18 @@ class LanguageSelect extends React.Component{
                     latinName,
                     extention
                 });
+
+                socketHandler.emit('languageChanged',{
+                    name,
+                    image,
+                    latinName,
+                    extention
+                });
+
                 that.setState({
                     show:false
                 })
+                
             }
         }
     }
