@@ -16,13 +16,13 @@ class SocketHandler{
 
     }
 
-    createServer(){
+    createServer(port){
 
         this.isServer = true;
 
         this.server = new Server(this.store);
 
-        return this.server.create();
+        return this.server.create(port);
 
     }
 

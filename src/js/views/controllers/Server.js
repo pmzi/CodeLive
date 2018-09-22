@@ -18,7 +18,7 @@ class Server {
 
     }
 
-    create() {
+    create(port = 2020) {
 
         return new Promise((resolve, reject) => {
 
@@ -40,7 +40,7 @@ class Server {
 
             });
 
-            this.http.listen(2020);
+            this.http.listen(port);
 
             // Let's set the admin class
 
