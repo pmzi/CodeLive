@@ -79,7 +79,14 @@ class ChoosingPage extends React.Component{
 
                     if (e.key.toLowerCase() == 'enter') {
 
-                        let ipAddress = ipAddressInput.value;
+                        let ipAddress = ipAddressInput.value.trim();
+
+                        if(!this.validateIP(ipAddress)){
+                            this.setState({
+                                addressInputHasError: true
+                            })
+                            return;
+                        }
 
                         this.setState({
                             loadingShow: true
@@ -143,6 +150,17 @@ class ChoosingPage extends React.Component{
             choosingPageNone: false,
             addressInputHasError: false
         })
+    }
+
+    validateIP(ipAddress){
+
+        let ipAddressRegex = /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,}$/;
+
+        if(ipAddressRegex.test(ipAddress)){
+            return true;
+        }
+        return false;
+
     }
 
     render (){
