@@ -128,7 +128,6 @@ class ChoosingPage extends React.Component{
             if(e.key.toLowerCase() == 'escape'){
                 this.resetState();
             }
-            console.log(e.key)
         }
 
     }
