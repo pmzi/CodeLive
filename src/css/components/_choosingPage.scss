@@ -68,7 +68,7 @@
 
     }
 
-    &__address-wrapper{
+    &__address-wrapper,&__port-wrapper{
 
         &--show{
             opacity: 1;

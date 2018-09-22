@@ -16,7 +16,9 @@ class ChoosingPage extends React.Component{
             joinSelected: false,
             choosingPageFadeOut: false,
             choosingPageNone: false,
-            addressInputHasError: false
+            addressInputHasError: false,
+            portHasError: false,
+            portShow: false
         };
 
     }
@@ -28,29 +30,52 @@ class ChoosingPage extends React.Component{
             this.setState({
                 createSelected: true,
                 selected: true,
-                loadingShow: true
+                portShow: true
             })
 
-            // Let's create
+            let portInput = this.refs.portWrapper.children[0];
 
-            socketHandler.createServer().then(() => {
+            setTimeout(()=>{
+                portInput.focus();
+            },200)
 
-                setTimeout(() => {
-                    
+            portInput.onkeydown = (e)=>{
+                if(e.key.toLowerCase() == 'enter'){
+
+                    let port = portInput.value.trim()
+
+                    if(!this.validatePort(port)){
+                        this.setState({
+                            portHasError: true
+                        })
+                    }
+
                     this.setState({
-                        loadingShow: false,
-                        choosingPageFadeOut: true
+                        loadingShow: true
                     })
 
-                    setTimeout(() => {
-                        this.setState({
-                            choosingPageNone: true
-                        })
-                    }, 500)
+                    // Let's create
 
-                }, 500)
+                    socketHandler.createServer(port).then(() => {
 
-            })
+                        setTimeout(() => {
+                            
+                            this.setState({
+                                loadingShow: false,
+                                choosingPageFadeOut: true
+                            })
+
+                            setTimeout(() => {
+                                this.setState({
+                                    choosingPageNone: true
+                                })
+                            }, 500)
+
+                        }, 500)
+
+                    })
+                }
+            }
 
         }
 
@@ -148,7 +173,9 @@ class ChoosingPage extends React.Component{
             joinSelected: false,
             choosingPageFadeOut: false,
             choosingPageNone: false,
-            addressInputHasError: false
+            addressInputHasError: false,
+            portHasError: false,
+            portShow: false
         })
     }
 
@@ -161,6 +188,15 @@ class ChoosingPage extends React.Component{
         }
         return false;
 
+    }
+
+    validatePort(port){
+        let portRegex = /^\d{1,}$/;
+
+        if(portRegex.test(port)){
+            return true;
+        }
+        return false;
     }
 
     render (){
@@ -200,6 +236,12 @@ class ChoosingPage extends React.Component{
                 <div ref='addressWrapper' className={`choosingPage__address-wrapper ${this.state.addressWrapperShow ? 'choosingPage__address-wrapper--show': ''}`}>
 
                     <Input className={this.state.addressInputHasError ? 'input--error':''} center={true} placeholder='IP Address' />
+
+                </div>
+
+                <div ref='portWrapper' className={`choosingPage__port-wrapper ${this.state.portShow ? 'choosingPage__port-wrapper--show': ''}`}>
+
+                    <Input className={this.state.portHasError ? 'input--error':''} center={true} placeholder='Port' />
 
                 </div>
 
