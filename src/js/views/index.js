@@ -6,9 +6,9 @@ const mainStore = require('./stores/mainStore');
 
 const MainPage = require('./components/MainPage');
 
-const Server = require('./controllers/Server');
+const SocketHandler = require('./controllers/SocketHandler');
 
-window.server = new Server(mainStore);
+window.socketHandler = new SocketHandler(mainStore);
 
 const jsx = (
     <Provider store={mainStore}>
