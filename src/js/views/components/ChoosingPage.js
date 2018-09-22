@@ -124,13 +124,33 @@ class ChoosingPage extends React.Component{
 
         }
 
+        this.refs.choosingPage.onkeydown = (e)=>{
+            if(e.key.toLowerCase() == 'escape'){
+                this.resetState();
+            }
+            console.log(e.key)
+        }
+
+    }
+
+    resetState(){
+        this.setState({
+            loadingShow: false,
+            addressWrapperShow: false,
+            selected: false,
+            createSelected: false,
+            joinSelected: false,
+            choosingPageFadeOut: false,
+            choosingPageNone: false,
+            addressInputHasError: false
+        })
     }
 
     render (){
         return (
-            <div className={`choosingPage ${this.state.choosingPageFadeOut ? 'choosingPage--fadeOut' : ''} ${this.state.choosingPageNone ? 'none' : ''}`}>
+            <div ref='choosingPage' className={`choosingPage ${this.state.choosingPageFadeOut ? 'choosingPage--fadeOut' : ''} ${this.state.choosingPageNone ? 'none' : ''}`}>
 
-                <div className={`choosingPage__item choice
+                <div ref='create' className={`choosingPage__item choice
                  ${this.state.createSelected ? 'choosingPage__item--selected' : ''}
                  ${this.state.selected && this.state.joinSelected ? 'choosingPage__item--not-selected' : ''}`}>
 
@@ -142,7 +162,7 @@ class ChoosingPage extends React.Component{
 
                 </div>
 
-                <div className={`choosingPage__item choice
+                <div ref='join' className={`choosingPage__item choice
                  ${this.state.joinSelected ? 'choosingPage__item--selected' : ''}
                  ${this.state.selected && this.state.createSelected ? 'choosingPage__item--not-selected' : ''}`}>
 
