@@ -34,6 +34,10 @@ class Compiler{
 
         let time = Date.now();
 
+        if(!fs.existsSync(config.codesDirectory)){
+            fs.mkdirSync(config.codesDirectory)
+        }
+
         let pathToFile = path.join(config.codesDirectory, `${time}.${ext}`);
 
         fs.writeFileSync(pathToFile, code);
