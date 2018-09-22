@@ -37,8 +37,9 @@ class Client{
 
                 // Let's set the client class
 
-                $('#wrapper').classList = 'client';
-                window.mainEditor.layout();
+                this.store.dispatch({
+                    type: 'IS_CLIENT'
+                });
 
                 this.isConnected = true;
 

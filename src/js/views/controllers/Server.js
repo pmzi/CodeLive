@@ -44,8 +44,9 @@ class Server {
 
             // Let's set the admin class
 
-            $('#wrapper').classList = 'server';
-            window.mainEditor.layout();
+            this.store.dispatch({
+                type: 'IS_SERVER'
+            });
 
             resolve();
 
