@@ -1,5 +1,7 @@
 const React = require('react');
 
+import { connect } from 'react-redux';
+
 const Header = require('./Header');
 const EditorWrapper = require('./EditorWrapper');
 const SideBar = require('./SideBar');
@@ -12,7 +14,7 @@ class MainPage extends React.Component{
     render(){
         return (
             <React.Fragment>
-                <div id='wrapper'>
+                <div id='wrapper' className={this.props.general.isServer ? 'server' : 'client'}>
                     <Header />
                     <EditorWrapper />
                     <SideBar />
@@ -25,4 +27,8 @@ class MainPage extends React.Component{
 
 }
 
-module.exports = MainPage;
+module.exports = connect((state)=>{
+    return {
+        general: state.general
+    };
+})(MainPage);
