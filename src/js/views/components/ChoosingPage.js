@@ -7,99 +7,98 @@ class ChoosingPage extends React.Component{
 
     componentDidMount(){
 
-        let choicesOfChoosingPage = $$('.choosingPage .choice');
+        this.refs.create.onclick = async ()=>{
 
-        for (let choice of choicesOfChoosingPage) {
-            choice.onclick = async function () {
+            await this.refs.create.classList.add('choosingPage__item--selected');
 
-                await this.classList.add('choosingPage__item--selected');
+            this.refs.join.classList.add('choosingPage__item--not-selected');
 
-                $('.choosingPage .choice:not(.choosingPage__item--selected)').classList.add('choosingPage__item--not-selected');
+            this.refs.loading.classList.add('choosingPage__loading--show');
 
+            // Let's create
 
-                let action = this.getAttribute('data-action');
+            socketHandler.createServer().then(() => {
 
-                if (action == 'create') {
+                setTimeout(() => {
+                    this.refs.loading.classList.remove('choosingPage__loading--show');
 
-                    $('.choosingPage__loading').classList.add('choosingPage__loading--show');
+                    this.refs.choosingPage.classList.add('choosingPage--fadeOut');
 
-                    // Let's create
-
-                    socketHandler.createServer().then(() => {
-
-                        setTimeout(() => {
-                            $('.choosingPage__loading').classList.remove('choosingPage__loading--show');
-
-                            $('.choosingPage').classList.add('choosingPage--fadeOut');
-
-                            setTimeout(() => {
-                                $('.choosingPage').classList.add('none');
-                            }, 500)
-
-                        }, 500)
-
-                    })
-
-                } else {
-
-                    // Let's join
-                    
                     setTimeout(() => {
-
-                        $('.choosingPage__address-wrapper').classList.add('choosingPage__address-wrapper--show');
-
-                        setTimeout(()=>{
-                            $('.choosingPage__address-wrapper input').focus();
-                        },200)
-                        
-                        $('.choosingPage__address-wrapper input').onkeydown = function (e) {
-
-                            if (e.key.toLowerCase() == 'enter') {
-
-                                let ipAddress = this.value;
-
-                                $('.choosingPage__loading').classList.add('choosingPage__loading--show');
-
-                                socketHandler.createClient(ipAddress).then(() => {
-
-                                    setTimeout(() => {
-
-                                        $('.choosingPage__loading').classList.remove('choosingPage__loading--show');
-
-                                        $('.choosingPage').classList.add('choosingPage--fadeOut');
-
-                                        setTimeout(() => {
-
-                                            $('.choosingPage').classList.add('none');
-
-                                        }, 500)
-
-                                    }, 500)
-
-                                }).catch(() => {
-
-                                    $('.choosingPage__loading').classList.remove('choosingPage__loading--show');
-
-                                    this.classList.add('input--error');
-
-                                });
-                            }
-
-                        };
-
+                        this.refs.choosingPage.classList.add('none');
                     }, 500)
 
-                }
+                }, 500)
 
-            };
+            })
+
+        }
+
+        this.refs.join.onclick = async()=>{
+            
+            await this.refs.join.classList.add('choosingPage__item--selected');
+
+            this.refs.create.classList.add('choosingPage__item--not-selected');
+
+            // Let's join
+                    
+            setTimeout(() => {
+
+                this.refs.addressWrapper.classList.add('choosingPage__address-wrapper--show');
+
+                let ipAddressInput = this.refs.addressWrapper.children[0];
+
+                setTimeout(()=>{
+                    ipAddressInput.focus();
+                },200)
+                
+                ipAddressInput.onkeydown = (e)=>{
+
+                    if (e.key.toLowerCase() == 'enter') {
+
+                        let ipAddress = ipAddressInput.value;
+
+                        this.refs.loading.classList.add('choosingPage__loading--show');
+
+                        socketHandler.createClient(ipAddress).then(() => {
+
+                            ipAddressInput.classList.remove('input--error');
+
+                            setTimeout(() => {
+
+                                this.refs.loading.classList.remove('choosingPage__loading--show');
+
+                                this.refs.choosingPage.classList.add('choosingPage--fadeOut');
+
+                                setTimeout(() => {
+
+                                    this.refs.choosingPage.classList.add('none');
+
+                                }, 500)
+
+                            }, 500)
+
+                        }).catch(() => {
+
+                            this.refs.loading.classList.remove('choosingPage__loading--show');
+                            
+                            this.refs.addressWrapper.children[0].classList.add('input--error');
+
+                        });
+                    }
+
+                };
+
+            }, 500)
+
         }
     }
 
     render (){
         return (
-            <div className="choosingPage">
+            <div ref='choosingPage' className="choosingPage">
 
-                <div data-action="create" className="choosingPage__item choice">
+                <div ref="create" className="choosingPage__item choice">
 
                     <img src="../images/networking.png" alt="" />
 
@@ -109,7 +108,7 @@ class ChoosingPage extends React.Component{
 
                 </div>
 
-                <div data-action="join" className="choosingPage__item choice">
+                <div ref="join" className="choosingPage__item choice">
 
                     <img src="../images/networking.png" alt="" />
 
@@ -119,13 +118,13 @@ class ChoosingPage extends React.Component{
 
                 </div>
 
-                <div className="choosingPage__loading">
+                <div ref='loading' className="choosingPage__loading">
 
                     <Spinner />
 
                 </div>
 
-                <div className="choosingPage__address-wrapper">
+                <div ref='addressWrapper' className="choosingPage__address-wrapper">
 
                     <Input center={true} placeholder='IP Address' />
 
