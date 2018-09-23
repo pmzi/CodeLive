@@ -10,25 +10,41 @@ class Compiler{
 
     static compile(languageName, code){
         
+        let platform = this.__getPlatformName();
+        
         let fileAddress;
 
         switch(languageName.toLowerCase()){
             case 'html':
                 fileAddress = this.__saveCodes(code, 'html');
-                HTMLCompiler.compile(fileAddress)
+                HTMLCompiler[`compile${platform}`](fileAddress)
             break;
             case 'javascript':
                 fileAddress = this.__saveCodes(code, 'js');
-                JSCompiler.compile(fileAddress);
+                JSCompiler[`compile${platform}`](fileAddress);
                 break;
             case 'cpp':
                 fileAddress = this.__saveCodes(code, 'cpp');
-                CppCompiler.compile(fileAddress);
+                CppCompiler[`compile${platform}`](fileAddress);
             break;
 
         }
 
     }
+    static __getPlatformName(){
+        switch(process.platform){
+            case 'darwin':
+                return 'Mac';
+            break;
+            case 'win32':
+                return 'Win';
+            break;
+            case 'linux':
+                return 'linux';
+            break;
+        }
+    }
+
 
     static __saveCodes(code, ext){
 
