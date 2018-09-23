@@ -20,6 +20,14 @@ class CppCompiler {
         
 
     }
+    
+    static compileMac(){
+        
+    }
+    
+    static compileLinux(){
+        
+    }
 
 }
 
