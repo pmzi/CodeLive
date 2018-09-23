@@ -5,7 +5,7 @@ const {
 
 class CppCompiler {
 
-    static compile(fileAddress) {
+    static compileWin(fileAddress) {
 
         let directory = fileAddress.split('\\');
         directory.pop();
@@ -19,6 +19,14 @@ class CppCompiler {
         });
         
 
+    }
+
+    static compileMac(){
+
+    }
+
+    static compileLinux(){
+        
     }
 
 }
