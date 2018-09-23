@@ -5,10 +5,18 @@ const {
 
 class JSCompiler {
 
-    static compile(fileAddress) {
+    static compileWin(fileAddress) {
 
         exec(`start cmd.exe /K node ${fileAddress}`);
 
+    }
+    
+    static compileMac(){
+        
+    }
+    
+    static compileLinux(){
+        
     }
 
 }
