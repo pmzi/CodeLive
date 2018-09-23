@@ -5,10 +5,18 @@ const {
 
 class HTMLCompiler {
 
-    static compile(fileAddress) {
+    static compileWin(fileAddress) {
         
         exec(`${fileAddress}`);
 
+    }
+    
+    static compileMac(){
+        
+    }
+    
+    static compileLinux(){
+        
     }
 
 }
