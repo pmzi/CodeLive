@@ -11,7 +11,7 @@ class CppCompiler {
         directory.pop();
         directory = directory.join('\\');
         
-        exec(`cd ${directory} & dmc ${fileAddress}`,()=>{
+        exec(`cd ${directory} & g++ ${fileAddress}`,()=>{
             fileAddress = fileAddress.split('.');
             fileAddress.pop();
             fileAddress = fileAddress.join('.')
