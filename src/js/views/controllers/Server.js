@@ -91,9 +91,9 @@ class Server {
 
     }
 
-    disconnect() {
+    disConnect() {
 
-        this.server.close(()=>{console.log("Server Closed!")});
+        this.io.close(()=>{console.log("Server Closed!")});
 
     }
 

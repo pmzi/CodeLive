@@ -3,6 +3,8 @@ const React = require('react');
 const Input = require('./Input');
 const Spinner = require('./Spinner');
 
+const {connect} = require('react-redux');
+
 class ChoosingPage extends React.Component{
 
     constructor(props){
@@ -73,6 +75,9 @@ class ChoosingPage extends React.Component{
                             setTimeout(() => {
                                 this.setState({
                                     choosingPageNone: true
+                                })
+                                this.props.dispatch({
+                                    type: 'HIDE_LOGIN'
                                 })
                             }, 500)
 
@@ -146,6 +151,10 @@ class ChoosingPage extends React.Component{
                                         choosingPageNone: true
                                     })
 
+                                    this.props.dispatch({
+                                        type: 'HIDE_LOGIN'
+                                    })
+
                                 }, 500)
 
                             }, 500)
@@ -172,6 +181,17 @@ class ChoosingPage extends React.Component{
             }
         }
 
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.showLogin != this.props.showLogin){
+            if(this.props.showLogin){
+                this.setState({
+                    choosingPageNone: false
+                })
+                setTimeout(this.resetState.bind(this),100)
+            }
+        }
     }
 
     resetState(){
@@ -261,4 +281,6 @@ class ChoosingPage extends React.Component{
 
 }
 
-module.exports = ChoosingPage;
+module.exports = connect((state)=>{
+    return {showLogin:state.general.showLogin}
+})(ChoosingPage);

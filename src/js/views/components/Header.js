@@ -13,7 +13,7 @@ class Header extends React.Component{
             <header className="header">
                 <div className="header__left-side">
                     <div className="header__side-icon">
-                        <Icon onClick={this.disconnect} clickable={true} color='red' icon='power_settings_new' />
+                        <Icon onClick={this.disconnect.bind(this)} clickable={true} color='red' icon='power_settings_new' />
                     </div>
                 </div>
                 <div className="header__ip-address">
@@ -43,16 +43,9 @@ class Header extends React.Component{
 
         // Let's show the choosingPage
 
-        $('.choosingPage').classList.remove('none');
-        setTimeout(() => {
-
-            $('.choosingPage').classList.remove('choosingPage--fadeOut');
-            $('.choosingPage__address-wrapper').classList.remove('choosingPage__address-wrapper--show');
-            $('.choosingPage__loading').classList.remove('choosingPage__loading--show');
-            $('.choosingPage .choosingPage__item--selected').classList.remove('choosingPage__item--selected');
-            $('.choosingPage .choosingPage__item--not-selected').classList.remove('choosingPage__item--not-selected');
-
-        }, 100)
+        this.props.dispatch({
+            type: 'SHOW_LOGIN'
+        })
     }
 
     sync(){
