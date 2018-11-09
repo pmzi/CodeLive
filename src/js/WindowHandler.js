@@ -18,7 +18,7 @@ class WindowHandler {
 
         this._mainWindow = new BrowserWindow({
             show: false,
-            icon: `${__dirname}/../images/logo.gif.ico`
+            icon: `${__dirname}/../images/CodeShare.ico`
         });
         
         this._mainWindow.maximize();
