@@ -50,6 +50,11 @@ class ChoosingPage extends React.Component{
                         })
                     }
 
+                    if(this.state.loadingShow){
+                        // Being created
+                        return;
+                    }
+
                     this.setState({
                         loadingShow: true
                     })
@@ -110,6 +115,11 @@ class ChoosingPage extends React.Component{
                             this.setState({
                                 addressInputHasError: true
                             })
+                            return;
+                        }
+
+                        if(this.state.loadingShow){
+                            // Being connected
                             return;
                         }
 
