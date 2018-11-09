@@ -237,7 +237,7 @@ class ChoosingPage extends React.Component{
                  ${this.state.createSelected ? 'choosingPage__item--selected' : ''}
                  ${this.state.selected && this.state.joinSelected ? 'choosingPage__item--not-selected' : ''}`}>
 
-                    <img src="../images/networking.png" alt="" />
+                    <img src="../images/create-room.png" alt="" />
 
                     <span>
                         Create a Group
@@ -249,7 +249,7 @@ class ChoosingPage extends React.Component{
                  ${this.state.joinSelected ? 'choosingPage__item--selected' : ''}
                  ${this.state.selected && this.state.createSelected ? 'choosingPage__item--not-selected' : ''}`}>
 
-                    <img src="../images/networking.png" alt="" />
+                    <img src="../images/enter-room.png" alt="" />
 
                     <span>
                         Join a Group
