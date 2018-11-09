@@ -75,17 +75,14 @@ class MonacoEditor extends React.Component{
     initSocketEvents(){
 
         this.editor.cursor.onDidChange((data)=>{
-            console.log(data, "cursorChange")
             socketHandler.emit("cursorChange", data)
         })
 
         this.editor.getModel().onDidChangeContent((data)=>{
-            console.log(data, "contentChange")
             socketHandler.emit("contentChange", data)
         })
 
         this.editor.onDidScrollChange((data)=>{
-            console.log(data, "scrollChange")
             socketHandler.emit("scrollChange", data)
         })        
 

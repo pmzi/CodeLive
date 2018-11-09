@@ -82,7 +82,6 @@ class Server {
         })
 
         socket.on('letsSync', ()=>{
-            console.log('salam')
             this.sync(socket)
         });
 
