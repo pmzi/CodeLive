@@ -1,5 +1,7 @@
 let io = require('socket.io');
 
+const ip = require('ip');
+
 const http = require('http');
 
 class Server {
@@ -52,7 +54,8 @@ class Server {
             // Let's set the admin class
 
             this.store.dispatch({
-                type: 'IS_SERVER'
+                type: 'IS_SERVER',
+                ip: ip.address()
             });
 
             resolve();

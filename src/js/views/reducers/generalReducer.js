@@ -1,13 +1,15 @@
 module.exports = (state = {
     isServer: false,
     port: '2020',
-    showLogin: true
+    showLogin: true,
+    ip: ''
 }, action) => {
 
     switch (action.type) {
         case 'IS_SERVER':
             return Object.assign({}, state, {
-                isServer: true
+                isServer: true,
+                ip: action.ip
             })
             break;
         case 'IS_CLIENT':
