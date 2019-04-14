@@ -37,4 +37,4 @@ We use [SemVer](http://semver.org/) for versioning.
 
 # Lisence
 CodeLive is licensed under the BSD 3-Clause License.
-see the [[LICENSE] file for more details.
+see the [LICENSE] file for more details.
