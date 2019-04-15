@@ -31,7 +31,8 @@
         ]
       },
       "electronPackagerConfig": {
-        "packageManager": "npm"
+        "packageManager": "npm",
+        "icon": "src/images/logo.png"
       },
       "electronWinstallerConfig": {
         "name": "codeshare"
