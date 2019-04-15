@@ -2,8 +2,6 @@
 
 CodeLive is a cross-platform collaborative code editor, designed to be a robust tool to teach programming languages in a class without the need of a bigger screen.
 
-CodeLive gives developers the ability to run code on multiple devices using docker -for now, it can only run HTML and others will be added soon-.
-
 ## Getting Started
 ![CodeShare 1-0](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-0.gif)
 ![CodeShare 1-1](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-1.jpg)
@@ -34,6 +32,11 @@ npm start
 
 # Versioning
 We use [SemVer](http://semver.org/) for versioning.
+
+# Contributers
+* **Pouya mozaffarMagham** - [pmzi](https://github.com/pmzi)
+* **Ali ShahAbbasi** - [shahabbasi](https://github.com/shahabbasi)
+* **Mina Tafreshi** - [minatafreshi](https://github.com/minatafreshi)
 
 # Lisence
 CodeLive is licensed under the BSD 3-Clause License.
