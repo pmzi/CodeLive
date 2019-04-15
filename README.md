@@ -4,8 +4,8 @@ CodeLive is a cross-platform collaborative code editor, designed to be a robust 
 
 ## Getting Started
 ![CodeShare 1-0](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-0.gif)
-![CodeShare 1-1](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-1.jpg)
-![CodeShare 1-2](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-2.jpg)
+![CodeShare 1-1](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-1.png)
+![CodeShare 1-2](https://raw.githubusercontent.com/pmzi/CodeShare/master/src/images/1-2.png)
 
 ## Installation Guide
 
@@ -37,6 +37,7 @@ We use [SemVer](http://semver.org/) for versioning.
 * **Pouya mozaffarMagham** - [pmzi](https://github.com/pmzi)
 * **Ali ShahAbbasi** - [shahabbasi](https://github.com/shahabbasi)
 * **Mina Tafreshi** - [minatafreshi](https://github.com/minatafreshi)
+* **Majid Ghasemi** - [Thewm](https://github.com/Thewm)
 
 # Lisence
 CodeLive is licensed under the BSD 3-Clause License.
