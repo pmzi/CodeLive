@@ -3,9 +3,9 @@
 CodeLive is a cross-platform collaborative code editor, designed to be a robust tool to teach programming languages in a class without the need of a bigger screen.
 
 ## Getting Started
-![Codelive 1-0](https://raw.githubusercontent.com/pmzi/CodeLive/master/src/images/1-0.gif)
-![CodeLive 1-1](https://raw.githubusercontent.com/pmzi/CodeLive/master/src/images/1-1.png)
-![CodeLive 1-2](https://raw.githubusercontent.com/pmzi/CodeLive/master/src/images/1-2.png)
+![Codelive 1-0](https://raw.githubusercontent.com/minatafreshi/CodeLive/master/src/images/1-0.gif)
+![CodeLive 1-1](https://raw.githubusercontent.com/minatafreshi/CodeLive/master/src/images/1-1.png)
+![CodeLive 1-2](https://raw.githubusercontent.com/minatafreshi/CodeLive/master/src/images/1-2.png)
 
 ## Installation Guide
 
