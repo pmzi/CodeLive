@@ -1,6 +1,6 @@
 {
-  "name": "codeshare",
-  "productName": "codeshare",
+  "name": "codelive",
+  "productName": "codelive",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": "src/js/app.js",
@@ -31,11 +31,10 @@
         ]
       },
       "electronPackagerConfig": {
-        "packageManager": "npm",
-        "icon": "src/images/logo.png"
+        "packageManager": "npm"
       },
       "electronWinstallerConfig": {
-        "name": "codeshare"
+        "name": "codelive"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
@@ -45,7 +44,7 @@
       },
       "windowsStoreConfig": {
         "packageName": "",
-        "name": "codeshare"
+        "name": "codelive"
       }
     }
   },
